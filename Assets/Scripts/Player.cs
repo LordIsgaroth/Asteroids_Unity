@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             else if (_currentSpeed > _maxSpeed) _currentSpeed = _maxSpeed;
         }        
 
-        Debug.Log(_currentSpeed);
+        //Debug.Log(_currentSpeed);
     }
 
     public void OnMove(InputAction.CallbackContext context)
