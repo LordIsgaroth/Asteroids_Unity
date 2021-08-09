@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7806078714302370526}
   - component: {fileID: 7973671319733090622}
   - component: {fileID: 7824328116197702820}
-  - component: {fileID: 7807722138075142788}
+  - component: {fileID: 4282257318936024904}
+  - component: {fileID: 230794184868574863}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Space object
@@ -95,13 +96,34 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1.17, y: -1.2349999}
   serializedVersion: 2
   m_Radius: 1.25
---- !u!114 &7807722138075142788
+--- !u!50 &4282257318936024904
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807377768653973742}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &230794184868574863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7807377768653973742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f955d75c25ae84e8b99e32dc0f3771, type: 3}
+  m_Script: {fileID: 11500000, guid: bb12998cadef8094bba0a4336aa01e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 4
+  _movementSpeed: 1.5

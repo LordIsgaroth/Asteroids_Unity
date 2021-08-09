@@ -1,28 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {    
     private Vector2 _moveAxis;
     private float _rotateDirection;
-    private float _maxSpeed;
+    [SerializeField] private float _maxSpeed;
     private float _currentSpeed;
-    private float _rotationSpeed;
-    private float _inertion = 0.025f;
+    [SerializeField] private float _rotationSpeed;
+    private float _inertion = 0.015f;
     private float _acceleration = 0.05f;
     private bool _accelerated = false;
 
-
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         _moveAxis = new Vector2(0, 1);
         _rotateDirection = 0;
-        _maxSpeed = 2f;
+        //_maxSpeed = 2f;
         _currentSpeed = 0;
-        _rotationSpeed = 2f;
+        //_rotationSpeed = 2f;
     }
 
     // Update is called once per frame
