@@ -15,13 +15,10 @@ public class Player : MonoBehaviour
     private float _acceleration = 0.05f;
     private bool _accelerated = false;
     [SerializeField] private Shooting _shootingController;
-    private GameObject _mainProjectile;
-
-    private UnityEvent mainWeaponFireEvent;
+    private GameObject _mainProjectile;    
   
     void Start()
-    {
-        mainWeaponFireEvent = new UnityEvent();
+    {        
         _mainProjectile = Shooting.GetProjectileByName("PlasmaBolt");
 
         _moveAxis = new Vector2(0, 1);
@@ -68,8 +65,6 @@ public class Player : MonoBehaviour
 
     public void OnFireMain(InputAction.CallbackContext context)
     {
-        _shootingController.Shoot(_mainProjectile);
-
-        //mainWeaponFireEvent.Invoke();
+        _shootingController.Shoot(_mainProjectile);        
     }
 }
