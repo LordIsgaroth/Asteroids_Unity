@@ -176,7 +176,7 @@ Transform:
   m_GameObject: {fileID: 374095956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 9.5, y: 9.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 584511596}
   - component: {fileID: 584511597}
   - component: {fileID: 584511594}
+  - component: {fileID: 584511598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -350,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 584511592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 2092133735}
   m_Father: {fileID: 0}
@@ -440,7 +441,19 @@ MonoBehaviour:
     m_ActionId: 12b93707-00df-42e2-82f6-efa6e9d38a3f
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 584511596}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnFireMain
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 27154636-6f0a-45df-9acb-18e7b35580c9
     m_ActionName: Player/Fire[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -462,6 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 2.5
   _rotationSpeed: 2.5
+  _shootingController: {fileID: 584511598}
 --- !u!50 &584511597
 Rigidbody2D:
   serializedVersion: 4
@@ -483,6 +497,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &584511598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342f5daea86aaa429ad586e31a70244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldown: 0.5
 --- !u!1 &1077475482
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +536,7 @@ Transform:
   m_GameObject: {fileID: 1077475482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

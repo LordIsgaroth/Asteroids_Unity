@@ -7,8 +7,6 @@ public class Borders : MonoBehaviour
 {
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log(other);
-
         if (other.tag == "Player") RevertPosition(other);
         else Destroy(other.gameObject);
     }

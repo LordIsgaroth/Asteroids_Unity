@@ -14,18 +14,23 @@ public class Player : MonoBehaviour
     private float _inertion = 0.015f;
     private float _acceleration = 0.05f;
     private bool _accelerated = false;
+    [SerializeField] private Shooting _shootingController;
+    private GameObject _mainProjectile;
 
-    // Start is called before the first frame update
+    private UnityEvent mainWeaponFireEvent;
+  
     void Start()
     {
+        mainWeaponFireEvent = new UnityEvent();
+        _mainProjectile = Shooting.GetProjectileByName("PlasmaBolt");
+
         _moveAxis = new Vector2(0, 1);
         _rotateDirection = 0;
         //_maxSpeed = 2f;
         _currentSpeed = 0;
         //_rotationSpeed = 2f;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         transform.Translate(_moveAxis * _currentSpeed * Time.deltaTime);
@@ -48,20 +53,23 @@ public class Player : MonoBehaviour
         {
             if (_currentSpeed < _maxSpeed) _currentSpeed += _acceleration;
             else if (_currentSpeed > _maxSpeed) _currentSpeed = _maxSpeed;
-        }        
-
-        //Debug.Log(_currentSpeed);
+        }                
     }
 
     public void OnMove(InputAction.CallbackContext context)
-    {
-        //_moveAxis = context.ReadValue<Vector2>();
-
+    {        
         _accelerated = !context.canceled;
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
         _rotateDirection = -context.ReadValue<Vector2>().x;
+    }
+
+    public void OnFireMain(InputAction.CallbackContext context)
+    {
+        _shootingController.Shoot(_mainProjectile);
+
+        //mainWeaponFireEvent.Invoke();
     }
 }

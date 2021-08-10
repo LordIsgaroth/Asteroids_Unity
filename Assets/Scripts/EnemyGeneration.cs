@@ -13,7 +13,7 @@ public static class EnemyGeneration
 
     public static GameObject GetEnemy()
     {
-        GameObject enemy = (GameObject)Resources.Load("Prefabs/Asteroid", typeof(GameObject));       
+        GameObject enemy = (GameObject)Resources.Load("Prefabs/Asteroid", typeof(GameObject));
 
         return enemy;
     }
