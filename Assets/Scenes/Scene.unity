@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e788f027a46c449ac17845ae2ff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 584511596}
   _borders: {fileID: 374095956}
 --- !u!1 &584511592
 GameObject:
@@ -331,10 +330,11 @@ GameObject:
   m_Component:
   - component: {fileID: 584511593}
   - component: {fileID: 584511595}
-  - component: {fileID: 584511596}
   - component: {fileID: 584511597}
   - component: {fileID: 584511594}
   - component: {fileID: 584511598}
+  - component: {fileID: 584511599}
+  - component: {fileID: 584511596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -410,8 +410,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511596}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 584511599}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -426,8 +426,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511596}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 584511599}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: OnLook
         m_Mode: 0
         m_Arguments:
@@ -442,8 +442,8 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511596}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 584511599}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: OnFireMain
         m_Mode: 0
         m_Arguments:
@@ -470,12 +470,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 584511592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caf3445da0e4a4743beae7a9a6231901, type: 3}
+  m_Script: {fileID: 11500000, guid: 79a92d98fe95b06428039c92e14f9cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 2.5
-  _rotationSpeed: 2.5
-  _shootingController: {fileID: 584511598}
+  _rotationSpeed: 3.5
 --- !u!50 &584511597
 Rigidbody2D:
   serializedVersion: 4
@@ -510,6 +509,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 0.5
+--- !u!114 &584511599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c305f4f8cdeb7814482d1077e79b81cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingController: {fileID: 584511598}
+  _movementController: {fileID: 584511596}
 --- !u!1 &1077475482
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
     [SerializeField] private GameObject _borders;
 
     void Start()
@@ -21,14 +21,11 @@ public class GameController : MonoBehaviour
         while(true)
         {
             Vector2 spawnPosition = EnemyGeneration.GetSpawnPosition(_borders);
-            GameObject generatedObject = Instantiate(EnemyGeneration.GetEnemy(), spawnPosition, Quaternion.identity);
-            //generatedObject.GetComponent<>().MovementDestination = new Vector2(-spawnPosition.x, -spawnPosition.y);
+            GameObject generatedObject = Instantiate(EnemyGeneration.GetEnemy(), spawnPosition, Quaternion.identity);            
             generatedObject.GetComponent<Enemy>().EnemyCollisionEvent.AddListener(EnemyCollision);
 
             yield return new WaitForSeconds(2);
-        }
-
-        //yield return null;
+        }        
     }
 
     private void EnemyCollision(GameObject enemy, Collider2D other)
