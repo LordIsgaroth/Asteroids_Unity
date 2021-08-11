@@ -4,16 +4,8 @@ using Movement;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private Shooting _shootingController;
+    [SerializeField] private Weapon _mainWeapon;
     [SerializeField] private InertionMovement _movementController;
-
-    //TODO: переработать систему стрельбы
-    private GameObject _mainProjectile;
-
-    void Start()
-    {
-        _mainProjectile = Shooting.GetProjectileByName("PlasmaBolt");
-    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -27,6 +19,6 @@ public class PlayerInput : MonoBehaviour
 
     public void OnFireMain(InputAction.CallbackContext context)
     {
-        _shootingController.Shoot(_mainProjectile);
+        _mainWeapon.Shoot();
     }
 }
