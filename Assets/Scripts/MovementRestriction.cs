@@ -1,17 +1,21 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using UnityEngine;
 
-///// <summary>
-///// Ограничивает выход игрока за пределы игровой зоны
-///// </summary>
-//public class MovementRestriction : MonoBehaviour
-//{
-//    [SerializeField] private GameObject player;
+/// <summary>
+/// Ограничивает выход за пределы игровой зоны
+/// </summary>
+public class MovementRestriction : MonoBehaviour
+{
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player") RevertPosition(other);
+        else Destroy(other.gameObject);
+    }
 
-//    void OnTriggerExit2D(Collider2D other)
-//    {
-//        //Когда игрок выходит за пределы этого объекта - он возвращается обратно с противоположной его стороны стороны
-//        player.transform.position = new Vector3(-player.transform.position.x, -player.transform.position.y);
-//    }
-//}
+    /// <summary>
+    /// Возвращает объект с обратной стороны игровой зоны
+    /// </summary>    
+    private void RevertPosition(Collider2D other)
+    {
+        other.transform.position = new Vector3(-other.transform.position.x, -other.transform.position.y);
+    }
+}
