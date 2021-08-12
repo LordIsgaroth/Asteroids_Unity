@@ -22,9 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Fire",
+                    "name": "FireMainWeapon",
                     "type": "Button",
                     "id": "27154636-6f0a-45df-9acb-18e7b35580c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FireChargedWeapon",
+                    "type": "Button",
+                    "id": "a69e0c75-eb0f-4f8c-b29c-0ab1608058b8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -93,7 +101,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "FireMainWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -104,7 +112,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "FireMainWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,6 +124,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8268de25-b1c5-4035-9caf-a91ad19a5b94",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireChargedWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b7cef09-12c9-43fb-93a7-d1c188fa1467",
+                    "path": "<Keyboard>/rightCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "FireChargedWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

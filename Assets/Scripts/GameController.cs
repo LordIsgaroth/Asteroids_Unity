@@ -36,8 +36,7 @@ public class GameController : MonoBehaviour
         }
         else if(other.tag == "Projectile")
         {
-            Destroy(enemy);
-            Destroy(other.gameObject);
+            Destroy(enemy);            
         }
     }
 }

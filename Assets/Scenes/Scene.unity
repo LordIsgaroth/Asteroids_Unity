@@ -332,6 +332,7 @@ GameObject:
   - component: {fileID: 584511595}
   - component: {fileID: 584511597}
   - component: {fileID: 584511594}
+  - component: {fileID: 584511600}
   - component: {fileID: 584511598}
   - component: {fileID: 584511599}
   - component: {fileID: 584511596}
@@ -371,7 +372,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0010751337, y: 0.0010751486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -382,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7183118, y: 0.7097106}
   m_EdgeRadius: 0
 --- !u!114 &584511595
 MonoBehaviour:
@@ -457,6 +458,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 27154636-6f0a-45df-9acb-18e7b35580c9
     m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 584511599}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: OnFireCharged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a69e0c75-eb0f-4f8c-b29c-0ab1608058b8
+    m_ActionName: Player/FireChargedWeapon[/Keyboard/leftCtrl,/Keyboard/rightCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -527,7 +544,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainWeapon: {fileID: 584511598}
+  _laserGun: {fileID: 584511600}
   _movementController: {fileID: 584511596}
+--- !u!114 &584511600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90357d192ad34994882f42de1b45bdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldown: 0.5
+  _projectile: {fileID: 1843400540201598013, guid: f9b1665e73b3644458244ddd087772ec, type: 3}
+  _shootingPosition: {fileID: 1694353512}
+  _maximumCharges: 3
+  _chargeResetCooldown: 5
 --- !u!1 &1077475482
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694353512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 584511593}
