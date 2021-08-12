@@ -15,6 +15,8 @@ namespace Movement
         public bool Accelerated { set { _accelerated = value; } }
         public float RotateDirection { set { _rotateDirection = value; } }
 
+        public float CurrentSpeed { get => _currentSpeed; }
+
         void Start()
         {
             _rotateDirection = 0;

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    //[SerializeField] private Player _player;
+    [SerializeField] private PlayerInformation _player;
     [SerializeField] private GameObject _borders;
+    [SerializeField] private float _spawnCooldown;
 
     void Start()
     {        
@@ -16,7 +17,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(_spawnCooldown);
 
         while(true)
         {
@@ -24,7 +25,7 @@ public class GameController : MonoBehaviour
             GameObject generatedObject = Instantiate(EnemyGeneration.GetEnemy(), spawnPosition, Quaternion.identity);            
             generatedObject.GetComponent<Enemy>().EnemyCollisionEvent.AddListener(EnemyCollision);
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(_spawnCooldown);
         }        
     }
 

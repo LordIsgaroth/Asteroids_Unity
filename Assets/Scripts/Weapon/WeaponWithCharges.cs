@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class WeaponWithCharges : Weapon
 {
+    private ChargesController _chargesController;
+
     [SerializeField] private int _maximumCharges;
     [SerializeField] private float _chargeResetCooldown;
 
-    private ChargesController _chargesController;
+    public int Charges { get => _chargesController.CurrentCharges; }
+    public float Cooldown { get => _chargesController.CurrentResetCooldown; }
 
     private new void Start()
     {
@@ -15,8 +18,7 @@ public class WeaponWithCharges : Weapon
 
     private new void Update()
     {
-        base.Update();
-        Debug.Log($"Charges: {_chargesController.CurrentCharges} Cooldown: {_chargesController.CurrentResetCooldown}");
+        base.Update();       
         _chargesController.ReduceCooldown(Time.deltaTime);
     }
 

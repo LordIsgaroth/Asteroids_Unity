@@ -17,7 +17,7 @@ public class ChargesController
         _maxCharges = maxCharges;
         _currentCharges = _maxCharges;
         _chargeResetCooldown = chargeResetCooldown;
-        _currentResetCooldown = _chargeResetCooldown;        
+        _currentResetCooldown = _chargeResetCooldown;       
     }
 
     public void UseCharge()
