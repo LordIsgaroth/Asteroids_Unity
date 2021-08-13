@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class DisplayToInterface : MonoBehaviour
 {
-    [SerializeField] private PlayerInformation _playerInformation;
-    [SerializeField] private float _textUpdateTime;
+    [SerializeField] private PlayerInformationUpdating _updater;
+    [SerializeField] private float _interfaceUpdateTime;
 
     [SerializeField] private Text _playerPositionText;
     [SerializeField] private Text _playerAngleText;
@@ -15,49 +15,26 @@ public class DisplayToInterface : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(UpdateText());
+        StartCoroutine(UpdateInterface());
     }   
 
-    private IEnumerator UpdateText()
+    private IEnumerator UpdateInterface()
     {
-        yield return new WaitForSeconds(_textUpdateTime);
+        yield return new WaitForSeconds(_interfaceUpdateTime);
 
         while (true)
         {
-            _playerPositionText.text = PositionToString();
-            _playerAngleText.text = AngleToString();
-            _playerSpeedText.text = SpeedToString();
-            _weaponChargesText.text = WeaponChargesToString();
-            _weaponCooldownText.text = WeaponCooldownToString();
-
-            yield return new WaitForSeconds(_textUpdateTime);
+            Display();
+            yield return new WaitForSeconds(_interfaceUpdateTime);
         }         
     }
 
-    private string PositionToString()
+    private void Display()
     {
-        Vector2 position = _playerInformation.Position * 100;
-        return $"{position.x:f2}; {position.y:f2}";
-    }
-
-    private string AngleToString()
-    {
-        float angle = _playerInformation.Angle;
-        return $"{angle:f0}°";
-    }
-
-    private string SpeedToString()
-    {
-        return $"{_playerInformation.Speed * 360f:f2} M/h";
-    }
-
-    private string WeaponChargesToString()
-    {        
-        return $"{_playerInformation.WeaponCharges}";
-    }
-
-    private string WeaponCooldownToString()
-    {
-        return $"{_playerInformation.WeaponCooldown:f2} sec";
+        _playerPositionText.text = _updater.PlayerInformation.PositionToString();
+        _playerAngleText.text = _updater.PlayerInformation.AngleToString();
+        _playerSpeedText.text = _updater.PlayerInformation.SpeedToString();
+        _weaponChargesText.text = _updater.PlayerInformation.WeaponChargesToString();
+        _weaponCooldownText.text = _updater.PlayerInformation.WeaponCooldownToString();
     }
 }

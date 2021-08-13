@@ -1,65 +1,35 @@
 using UnityEngine;
-using Movement;
 
-public class PlayerInformation : MonoBehaviour
-{
-    [SerializeField] private InertionMovement _movementController;
-    [SerializeField] private WeaponWithCharges _weapon;
+public class PlayerInformation
+{   
+    public Vector2 Position { get; set; }
+    public float Angle { get; set; }
+    public float Speed { get; set; }
+    public int WeaponCharges { get; set; }
+    public float ChargeCooldown { get; set; }
 
-    private Vector2 _position;
-    private float _angle;
-    private float _speed;
-    private int _weaponCharges;
-    private float _weaponCooldown;
-
-    public Vector2 Position { get => _position; }
-    public float Angle { get => _angle; }
-    public float Speed { get => _speed; }    
-    public int WeaponCharges { get => _weaponCharges; }
-    public float WeaponCooldown { get => _weaponCooldown; }
-
-    private void Start()
-    {
-        _position = new Vector2();
+    public string PositionToString()
+    {     
+        return $"{Position.x*100:f2}; {Position.y*100:f2}";
     }
 
-    private void Update()
-    {
-        UpdatePlayerInformation();
-    }
-
-    private void UpdatePlayerInformation()
-    {
-        SetPlayerPosition();
-        SetPlayerAngle();
-        SetPlayerSpeed();
-        SetWeaponCharges();
-        SetWeaponCooldown();
-    }
-
-    private void SetPlayerPosition()
+    public string AngleToString()
     {        
-        _position.x = transform.position.x;
-        _position.y = transform.position.y;
+        return $"{Angle:f0}°";
     }
 
-    private void SetPlayerAngle()
+    public string SpeedToString()
     {
-        _angle = transform.rotation.eulerAngles.z;
+        return $"{Speed * 360f:f2} M/h";
     }
 
-    private void SetPlayerSpeed()
+    public string WeaponChargesToString()
     {
-        _speed = _movementController.CurrentSpeed;
+        return $"{WeaponCharges}";
     }
 
-    private void SetWeaponCharges()
+    public string WeaponCooldownToString()
     {
-        _weaponCharges = _weapon.Charges;
-    }
-
-    private void SetWeaponCooldown()
-    {
-        _weaponCooldown = _weapon.Cooldown;
+        return $"{ChargeCooldown:f2} sec";
     }
 }

@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e788f027a46c449ac17845ae2ff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 584511601}
   _borders: {fileID: 374095956}
   _spawnCooldown: 2
 --- !u!1 &584511592
@@ -737,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementController: {fileID: 584511596}
-  _weapon: {fileID: 584511600}
+  _weaponWithCharges: {fileID: 584511600}
 --- !u!1 &722931110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,8 +1917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421a41161797af43ac16a2d5b885e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInformation: {fileID: 584511601}
-  _textUpdateTime: 0.1
+  _updater: {fileID: 0}
+  _interfaceUpdateTime: 0
   _playerPositionText: {fileID: 310829912}
   _playerAngleText: {fileID: 1945048908}
   _playerSpeedText: {fileID: 0}
@@ -2039,8 +2038,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421a41161797af43ac16a2d5b885e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInformation: {fileID: 584511601}
-  _textUpdateTime: 0.1
+  _updater: {fileID: 584511601}
+  _interfaceUpdateTime: 0.15
   _playerPositionText: {fileID: 310829912}
   _playerAngleText: {fileID: 1945048908}
   _playerSpeedText: {fileID: 964098991}
