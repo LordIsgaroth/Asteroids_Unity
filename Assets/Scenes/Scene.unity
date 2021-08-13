@@ -1837,7 +1837,6 @@ GameObject:
   - component: {fileID: 8363467656549960306}
   - component: {fileID: 8363467656549960308}
   - component: {fileID: 8363467656549960307}
-  - component: {fileID: 8363467656549960309}
   m_Layer: 5
   m_Name: MovementInformation
   m_TagString: Untagged
@@ -1905,25 +1904,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8363467656549960305}
   m_CullTransparentMesh: 1
---- !u!114 &8363467656549960309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363467656549960305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4421a41161797af43ac16a2d5b885e9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _updater: {fileID: 0}
-  _interfaceUpdateTime: 0
-  _playerPositionText: {fileID: 310829912}
-  _playerAngleText: {fileID: 1945048908}
-  _playerSpeedText: {fileID: 0}
-  _weaponChargesText: {fileID: 0}
-  _weaponCooldownText: {fileID: 0}
 --- !u!1 &8363467657004413314
 GameObject:
   m_ObjectHideFlags: 0

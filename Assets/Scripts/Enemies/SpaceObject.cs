@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Enemy : MonoBehaviour
+public class SpaceObject : MonoBehaviour
 {    
     [SerializeField] protected float _score;    
 
