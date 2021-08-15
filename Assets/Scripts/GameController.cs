@@ -22,12 +22,20 @@ public class GameController : MonoBehaviour
         while(true)
         {
             SpawnParameters spawnParameters = EnemyGeneration.GetSpawnParameters(_borders);
-            GameObject generatedObject = Instantiate(EnemyGeneration.GetEnemy(), spawnParameters.Position, Quaternion.identity);
+            GameObject generatedObject = Instantiate(EnemyGeneration.GetPrefabByName(ChooseEnemyType()), spawnParameters.Position, Quaternion.identity);
             generatedObject.transform.Rotate(0, 0, spawnParameters.RotationAngle);
             generatedObject.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(Collision);
 
             yield return new WaitForSeconds(_spawnCooldown);
         }        
+    }
+    private string ChooseEnemyType()
+    {
+        int generationValue = Random.Range(1, 101);
+
+        if (generationValue >= 85) return "UFO";
+        else return "Asteroid";
+        
     }
 
     private void Collision(GameObject enemy, Collider2D other)
