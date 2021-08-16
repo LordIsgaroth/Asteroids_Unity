@@ -4,6 +4,6 @@ namespace Movement
 {
     public abstract class Movement : MonoBehaviour
     {
-        [SerializeField] protected float _movementSpeed;        
+        [SerializeField] protected float _movementSpeed;   
     }
 }

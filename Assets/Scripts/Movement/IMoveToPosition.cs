@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Movement
 {
-    public interface IMoveToPsition
+    public interface IMoveToPosition
     {
         public void SetTargetPosition(Vector2 position);
     }

@@ -3,13 +3,15 @@ using UnityEngine.Events;
 
 public class SpaceObject : MonoBehaviour
 {    
-    [SerializeField] protected float _score;    
+    [SerializeField] protected int _score;
 
-    UnityEvent<GameObject, Collider2D> _enemyCollisionEvent = new UnityEvent<GameObject, Collider2D>();
-    public UnityEvent<GameObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }   
+    public int Score { get => _score; }
+
+    UnityEvent<SpaceObject, Collider2D> _enemyCollisionEvent = new UnityEvent<SpaceObject, Collider2D>();
+    public UnityEvent<SpaceObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _enemyCollisionEvent.Invoke(gameObject, collision);
+        _enemyCollisionEvent.Invoke(this, collision);
     }
 }

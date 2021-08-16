@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Movement
 {
-    public class MovementToPosition : Movement, IMoveToPsition
+    public class MovementToPosition : Movement, IMoveToPosition
     {
         protected Vector2 _movementDestination = new Vector2();
 

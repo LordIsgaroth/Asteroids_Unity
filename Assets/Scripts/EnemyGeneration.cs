@@ -11,13 +11,6 @@ public static class EnemyGeneration
         right = 3
     }
 
-    public static GameObject GetEnemy()
-    {
-        GameObject enemy = GetPrefabByName("Asteroid");
-
-        return enemy;
-    }
-
     public static SpawnParameters GetSpawnParameters(GameObject borders)
     {
         SpawnParameters parameters = new SpawnParameters();

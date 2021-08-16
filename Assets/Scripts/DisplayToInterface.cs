@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class DisplayToInterface : MonoBehaviour
 {
-    [SerializeField] private PlayerInformationUpdating _updater;
+    [SerializeField] private PlayerInformationUpdating _updater;    
     [SerializeField] private float _interfaceUpdateTime;
 
     [SerializeField] private Text _playerPositionText;
@@ -12,29 +12,35 @@ public class DisplayToInterface : MonoBehaviour
     [SerializeField] private Text _playerSpeedText;
     [SerializeField] private Text _weaponChargesText;
     [SerializeField] private Text _weaponCooldownText;
+    [SerializeField] private Text _scoreText;
 
     void Start()
     {
-        StartCoroutine(UpdateInterface());
+        StartCoroutine(UpdatePlayerData());
     }   
 
-    private IEnumerator UpdateInterface()
+    private IEnumerator UpdatePlayerData()
     {
         yield return new WaitForSeconds(_interfaceUpdateTime);
 
         while (true)
         {
-            Display();
+            DisplayPlayerData();
             yield return new WaitForSeconds(_interfaceUpdateTime);
         }         
     }
 
-    private void Display()
+    private void DisplayPlayerData()
     {
         _playerPositionText.text = _updater.PlayerInformation.PositionToString();
         _playerAngleText.text = _updater.PlayerInformation.AngleToString();
         _playerSpeedText.text = _updater.PlayerInformation.SpeedToString();
         _weaponChargesText.text = _updater.PlayerInformation.WeaponChargesToString();
         _weaponCooldownText.text = _updater.PlayerInformation.WeaponCooldownToString();
+    }
+
+    public void SetScore(int score)
+    {
+        _scoreText.text = $"Score: {score}";
     }
 }
