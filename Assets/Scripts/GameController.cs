@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -70,7 +69,7 @@ public class GameController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         else if(other.tag == "SimpleProjectile" && spaceObject.tag == "Shatters")
         {

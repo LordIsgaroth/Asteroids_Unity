@@ -660,10 +660,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a92d98fe95b06428039c92e14f9cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 2.5
+  _movementSpeed: 3.5
   _rotationSpeed: 3
   _inertion: 0.015
-  _acceleration: 0.05
+  _acceleration: 0.045
 --- !u!50 &584511597
 Rigidbody2D:
   serializedVersion: 4
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342f5daea86aaa429ad586e31a70244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 0.5
+  _cooldown: 0.2
   _projectile: {fileID: 1440871929643468, guid: 4e42b20abdb0a4048997dbd936d7bc0f, type: 3}
   _shootingPosition: {fileID: 1694353512}
 --- !u!114 &584511599
