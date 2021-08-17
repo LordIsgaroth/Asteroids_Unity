@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using Movement;
 
 public class GameController : MonoBehaviour
@@ -10,7 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private DisplayToInterface _interfaceDisplayer;
     [SerializeField] private GameObject _borders;
     [SerializeField] private float _spawnCooldown;
-    [SerializeField] private GameOverDisplaying _gameOverDisplaying;
+    [SerializeField] private GameOver _gameOverManager;
 
     private int _score = 0;
 
@@ -105,6 +104,6 @@ public class GameController : MonoBehaviour
     private void GameOver()
     {
         Time.timeScale = 0;
-        _gameOverDisplaying.Display(_score);
+        _gameOverManager.Display(_score);
     }
 }
