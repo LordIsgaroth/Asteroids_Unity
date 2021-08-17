@@ -1,5 +1,6 @@
 using UnityEngine;
 using Movement;
+using Weapons;
 
 public class PlayerInformationUpdating : MonoBehaviour
 {
