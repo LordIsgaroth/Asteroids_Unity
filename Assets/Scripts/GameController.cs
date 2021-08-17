@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private DisplayToInterface _interfaceDisplayer;
     [SerializeField] private GameObject _borders;
     [SerializeField] private float _spawnCooldown;
-    [SerializeField] private Text _scoreText;
+    [SerializeField] private GameOverDisplaying _gameOverDisplaying;
 
     private int _score = 0;
 
@@ -69,7 +69,8 @@ public class GameController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            //Destroy(other.gameObject);
+            Destroy(other.gameObject);
+            GameOver();
         }
         else if(other.tag == "SimpleProjectile" && spaceObject.tag == "Shatters")
         {
@@ -99,5 +100,11 @@ public class GameController : MonoBehaviour
     {
         _score += spaceObject.Score;
         ScoreChanged.Invoke(_score);
+    }
+
+    private void GameOver()
+    {
+        Time.timeScale = 0;
+        _gameOverDisplaying.Display(_score);
     }
 }
