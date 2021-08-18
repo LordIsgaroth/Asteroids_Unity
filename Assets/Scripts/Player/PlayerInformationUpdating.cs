@@ -2,6 +2,9 @@ using UnityEngine;
 using Movement;
 using Weapons;
 
+/// <summary>
+/// Обновление информации об игроке
+/// </summary>
 public class PlayerInformationUpdating : MonoBehaviour
 {
     [SerializeField] private InertionMovement _movementController;

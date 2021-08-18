@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Работа с префабами
+/// </summary>
 public static class PrefabsManager
 {
     public static GameObject GetPrefabByName(string name)

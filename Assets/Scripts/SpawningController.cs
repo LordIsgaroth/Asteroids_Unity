@@ -5,6 +5,9 @@ using BaseObjects;
 
 namespace Spawning
 {
+    /// <summary>
+    /// Управление генерацией объектов
+    /// </summary>
     [RequireComponent(typeof(GameController))]
     public class SpawningController : MonoBehaviour
     {

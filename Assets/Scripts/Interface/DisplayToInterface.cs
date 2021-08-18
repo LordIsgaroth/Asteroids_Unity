@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Вывод информации в пользовательский интерфейс
+/// </summary>
 public class DisplayToInterface : MonoBehaviour
 {
     [SerializeField] private PlayerInformationUpdating _updater;    
@@ -19,6 +22,9 @@ public class DisplayToInterface : MonoBehaviour
         StartCoroutine(UpdatePlayerData());
     }   
 
+    //Если выводить информацию каждый кадр,
+    //её трудно будет воспринимать
+    //поэтому реализован вывод раз в заданный промежуток времени
     private IEnumerator UpdatePlayerData()
     {
         yield return new WaitForSeconds(_interfaceUpdateTime);

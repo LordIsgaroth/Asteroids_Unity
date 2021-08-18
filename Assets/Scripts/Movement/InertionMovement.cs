@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Movement
 {
+    /// <summary>
+    /// Движение с инерцией
+    /// </summary>
     public class InertionMovement : Movement
     {
         [SerializeField] private float _rotationSpeed;

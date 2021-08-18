@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Класс, контролирующий игровой процесс
+/// </summary>
 public class GameController : MonoBehaviour
 {
     [SerializeField] private PlayerInformationUpdating _playerInformationUpdating;
@@ -65,4 +69,9 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
         _gameOverManager.Display(_score);
     }
+
+    public void PlayAgain()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Scene");    }
 }

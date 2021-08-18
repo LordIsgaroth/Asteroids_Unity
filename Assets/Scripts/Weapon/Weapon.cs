@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Оружие
+    /// </summary>
     public class Weapon : MonoBehaviour
     {
         [SerializeField] protected float _cooldown;

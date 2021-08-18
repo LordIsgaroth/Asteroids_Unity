@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Космический объект
+/// </summary>
 public class SpaceObject : MonoBehaviour
 {    
     [SerializeField] protected int _score;

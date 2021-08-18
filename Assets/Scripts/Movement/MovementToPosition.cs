@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Movement
 {
+    /// <summary>
+    /// Движение к заданной позиции
+    /// </summary>
     public class MovementToPosition : Movement, IMoveToPosition
     {
         protected Vector2 _movementDestination = new Vector2();

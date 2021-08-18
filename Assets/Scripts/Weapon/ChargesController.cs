@@ -1,6 +1,9 @@
 
 namespace Weapons
 {
+    /// <summary>
+    /// Управление зарядами
+    /// </summary>
     public class ChargesController
     {
         protected int _maxCharges;

@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 using Movement;
 using Weapons;
 
+/// <summary>
+/// Обработка пользовательского ввода
+/// </summary>
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Weapon _mainWeapon;

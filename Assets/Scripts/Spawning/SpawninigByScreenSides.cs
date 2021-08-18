@@ -4,6 +4,9 @@ using BaseObjects;
 
 namespace Spawning
 {
+    /// <summary>
+    /// Генерация с разных сторон игровой области
+    /// </summary>
     public class SpawninigByScreenSides : ISpawning
     {
         private MovementRestriction _borders;

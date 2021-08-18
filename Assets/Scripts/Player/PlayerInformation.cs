@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Содержит информацию об игроке
+/// </summary>
 public class PlayerInformation
 {   
     public Vector2 Position { get; set; }

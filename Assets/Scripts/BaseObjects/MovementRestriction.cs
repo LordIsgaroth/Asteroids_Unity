@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace BaseObjects
 {
+    /// <summary>
+    /// Ограничение перемещения объектов
+    /// </summary>
     public class MovementRestriction : MonoBehaviour
     {
         void OnTriggerExit2D(Collider2D other)

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Destruction
 {
+    /// <summary>
+    /// ”ничтожение спуст€ заданное врем€
+    /// </summary>
     public class DestructionAfterTime : MonoBehaviour
     {
         [SerializeField] private float _lifetime;
