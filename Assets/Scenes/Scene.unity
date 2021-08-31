@@ -592,7 +592,6 @@ GameObject:
   - component: {fileID: 584511600}
   - component: {fileID: 584511598}
   - component: {fileID: 584511599}
-  - component: {fileID: 584511596}
   - component: {fileID: 584511601}
   - component: {fileID: 584511602}
   - component: {fileID: 584511603}
@@ -763,22 +762,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
---- !u!114 &584511596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584511592}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a92d98fe95b06428039c92e14f9cb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementSpeed: 3.5
-  _rotationSpeed: 3
-  _inertion: 0.015
-  _acceleration: 0.045
 --- !u!50 &584511597
 Rigidbody2D:
   serializedVersion: 4
@@ -829,7 +812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainWeapon: {fileID: 584511598}
   _laserGun: {fileID: 584511600}
-  _movementController: {fileID: 584511596}
+  _movementController: {fileID: 0}
 --- !u!114 &584511600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c45dd38a83cf964386dbdbd4eaa6d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementController: {fileID: 584511596}
+  _movementView: {fileID: 584511603}
   _weaponWithCharges: {fileID: 584511600}
 --- !u!114 &584511602
 MonoBehaviour:
@@ -875,6 +858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inertionValue: 0.015
   _accelerationValue: 0.045
+  _maxMovementSpeed: 3
+  _maxRotationSpeed: 3.5
 --- !u!114 &584511603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,8 +872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd07a78c551e9640ad71d809dc0f554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxMovementSpeed: 3.5
-  _maxRotationSpeed: 3
 --- !u!1 &722931110
 GameObject:
   m_ObjectHideFlags: 0

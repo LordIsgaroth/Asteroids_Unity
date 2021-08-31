@@ -4,20 +4,28 @@ using UnityEngine.InputSystem;
 namespace Movement
 {
     // TODO: избавиться от наследования от MonoBeh
+
+    /// <summary>
+    /// Контроллер движения с инерцией
+    /// </summary>
     public class InertionMovementController : MonoBehaviour
     {
         [SerializeField] private float _inertionValue;
         [SerializeField] private float _accelerationValue;
+        [SerializeField] private float _maxMovementSpeed;
+        [SerializeField] private float _maxRotationSpeed;
 
         private bool _accelerated;
 
-        public InertionMovementView View { get; private set; }
+        public MovementByDirectionWithRotationView View { get; private set; }
         public InertionMovementModel Model { get; private set; }
 
         private void Awake()
         {
-            View = GetComponent<InertionMovementView>();
-            Model = new InertionMovementModel(_accelerationValue, _inertionValue, View.MaxMovementSpeed, View.transform);
+            View = GetComponent<MovementByDirectionWithRotationView>();
+            View.RotationSpeed = _maxRotationSpeed;
+
+            Model = new InertionMovementModel(_accelerationValue, _inertionValue, _maxMovementSpeed, View.transform);
             Model.MovementUpdated.AddListener(View.UpdateMovement);
         }
 

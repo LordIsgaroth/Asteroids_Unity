@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1758982516}
   - component: {fileID: 5181258864318616868}
   - component: {fileID: 5707956849912810188}
+  - component: {fileID: 9127485145191605765}
   m_Layer: 0
   m_Name: PlasmaBolt
   m_TagString: SimpleProjectile
@@ -167,7 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2031dc979d94237429d017e4bbd1eeab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 4.5
 --- !u!114 &5707956849912810188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +180,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1038379f521002e4eab59c87d64fa21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9127485145191605765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440871929643468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a175c02ab0f1446b38cad2454f5dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 4.5

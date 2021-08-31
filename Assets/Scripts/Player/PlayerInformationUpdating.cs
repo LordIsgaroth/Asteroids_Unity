@@ -7,7 +7,7 @@ using Weapons;
 /// </summary>
 public class PlayerInformationUpdating : MonoBehaviour
 {
-    [SerializeField] private InertionMovement _movementController;
+    [SerializeField] private MovementView _movementView;
     [SerializeField] private WeaponWithCharges _weaponWithCharges;
 
     private Vector2 _currentPosition;
@@ -48,7 +48,7 @@ public class PlayerInformationUpdating : MonoBehaviour
 
     private void SetPlayerSpeed()
     {
-        _playerInformation.Speed = _movementController.CurrentSpeed;
+        _playerInformation.Speed = _movementView.MovementSpeed;
     }
 
     private void SetWeaponCharges()

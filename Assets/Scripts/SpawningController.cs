@@ -50,8 +50,8 @@ namespace Spawning
 
             if (type == "UFO")
             {
-                IMoveToPosition movementController = generatedObject.GetComponent<IMoveToPosition>();
-                if (movementController == null) throw new System.Exception("UFO does not contain IMoveToPosition!");
+                SpaceShip movementController = generatedObject.GetComponent<SpaceShip>();
+                if (movementController == null) throw new System.Exception("UFO does not contain SpaceShip!");
                 _gameController.PlayerPositionChanged.AddListener(movementController.SetTargetPosition);
             }
             else
