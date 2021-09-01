@@ -1,3 +1,5 @@
+using BaseObjects;
+using System.Threading.Tasks;
 
 namespace Weapons
 {
@@ -6,37 +8,48 @@ namespace Weapons
     /// </summary>
     public class ChargesController
     {
-        protected int _maxCharges;
-        protected float _chargeResetCooldown;
-        protected int _currentCharges;
-        protected float _currentResetCooldown;
+        private int _maxCharges;
+        private float _chargeResetCooldown;
+        private int _currentCharges;       
+        private ICooldown _cooldownController;
+        private Task _chargesManager;
 
         public int CurrentCharges { get => _currentCharges; }
-        public float CurrentResetCooldown { get => _currentResetCooldown; }
+        public float CurrentResetCooldown { get => _cooldownController.GetCurrentCooldown(); }
 
         public ChargesController(int maxCharges, float chargeResetCooldown)
         {
             _maxCharges = maxCharges;
             _currentCharges = _maxCharges;
-            _chargeResetCooldown = chargeResetCooldown;
-            _currentResetCooldown = _chargeResetCooldown;
+            _chargeResetCooldown = chargeResetCooldown;            
+
+            float cooldownStep = 0.001f;
+            _cooldownController = new CooldownByStep(_chargeResetCooldown, cooldownStep);
+
+            _chargesManager = new Task(ManageCarges);
+            _chargesManager.Start();
         }
 
         public void UseCharge()
         {
-            if (_currentCharges > 0) _currentCharges--;
+            if (_currentCharges > 0)
+            {
+                _currentCharges--;
+                if (CurrentResetCooldown == 0) _cooldownController.StartCooldown();
+            }                
         }
 
-        public void ReduceCooldown(float time)
+        private void ManageCarges()
         {
-            if (_currentCharges == _maxCharges) return;
-
-            _currentResetCooldown -= time;
-
-            if (_currentResetCooldown <= 0)
+            while(true)
             {
-                _currentResetCooldown = _chargeResetCooldown;
-                _currentCharges++;
+                if (_currentCharges == _maxCharges) continue;
+
+                if (CurrentResetCooldown == 0)
+                {
+                    _currentCharges++;
+                    _cooldownController.StartCooldown();
+                }
             }
         }
     }

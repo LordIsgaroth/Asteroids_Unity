@@ -8,7 +8,7 @@ using Weapons;
 public class PlayerInformationUpdating : MonoBehaviour
 {
     [SerializeField] private MovementView _movementView;
-    [SerializeField] private WeaponWithCharges _weaponWithCharges;
+    [SerializeField] private WeaponView _weaponView;
 
     private Vector2 _currentPosition;
     private PlayerInformation _playerInformation;
@@ -53,11 +53,11 @@ public class PlayerInformationUpdating : MonoBehaviour
 
     private void SetWeaponCharges()
     {
-        _playerInformation.WeaponCharges = _weaponWithCharges.Charges;
+        _playerInformation.WeaponCharges = _weaponView.CurrentCharges;
     }
 
     private void SetWeaponCooldown()
     {
-        _playerInformation.ChargeCooldown = _weaponWithCharges.Cooldown;
+        _playerInformation.ChargeCooldown = _weaponView.ChargeCooldown;
     }
 }

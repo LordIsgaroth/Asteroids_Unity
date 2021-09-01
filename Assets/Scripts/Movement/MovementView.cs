@@ -16,7 +16,7 @@ namespace Movement
 
             set 
             {
-                if (value < 0) throw new Exception("Speen cannot be negative!");
+                if (value < 0) throw new Exception("Speed cannot be negative!");
 
                 _movementSpeed = value;
             } 

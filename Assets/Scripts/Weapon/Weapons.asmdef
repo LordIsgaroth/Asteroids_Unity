@@ -1,7 +1,10 @@
 {
     "name": "Weapons",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:4aae683a22f146a4dbe1e3ea29b1b29c"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

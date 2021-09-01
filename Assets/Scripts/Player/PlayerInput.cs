@@ -8,8 +8,8 @@ using Weapons;
 /// </summary>
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private Weapon _mainWeapon;
-    [SerializeField] private WeaponWithCharges _laserGun;
+    //[SerializeField] private Weapon _mainWeapon;
+    //[SerializeField] private WeaponWithCharges _laserGun;
     //[SerializeField] private InertionMovement _movementController;
 
     //public void OnMove(InputAction.CallbackContext context)
@@ -24,11 +24,11 @@ public class PlayerInput : MonoBehaviour
 
     public void OnFireMain(InputAction.CallbackContext context)
     {
-        _mainWeapon.Shoot();
+        //_mainWeapon.Shoot();
     }
 
     public void OnFireCharged(InputAction.CallbackContext context)
     {
-        _laserGun.Shoot();
+        //_laserGun.Shoot();
     }
 }
