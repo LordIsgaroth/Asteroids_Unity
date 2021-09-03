@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using BaseObjects;
+using UnityEngine.Events;
 
 namespace Spawning
 {
@@ -8,8 +9,17 @@ namespace Spawning
     /// Генерация с разных сторон игровой области
     /// </summary>
     public class SpawninigByScreenSides : ISpawning
-    {
-        private MovementRestriction _borders;
+    {        
+        private float _topBorder;
+        private float _bottomBorder;
+        private float _leftBorder;
+        private float _rightBorder;
+        private ITypeSelection _enemyTypeSelector;
+        private ICooldown _cooldownController;
+        private Action _cooldownCompleted;             
+        private System.Random _randomizer;
+
+        public Action<SpawnParameters> OnSpawnEvent;
 
         private enum SpawnMode
         {
@@ -19,54 +29,79 @@ namespace Spawning
             right = 3
         }
 
-        public SpawninigByScreenSides(MovementRestriction borders)
+        public SpawninigByScreenSides(float spawningCooldown, MovementRestriction borders)
         {
-            _borders = borders;
+            _randomizer = new System.Random();
+            _enemyTypeSelector = new RandomEnemyTypeSelection();
+
+            InitializeBorderValues(borders);
+
+            double cooldownInMilliseconds = spawningCooldown * 1000;
+            double cooldownStepInMilliseconds = 10;
+
+            _cooldownController = new CooldownByStep(cooldownInMilliseconds, cooldownStepInMilliseconds);
+
+            _cooldownCompleted = Spawn;
+            _cooldownController.CooldownCompletedEvent += _cooldownCompleted;            
         }
 
-        public SpawnParameters GetSpawnParameters()
+        public void StartSpawning()
+        {
+            _cooldownController.StartCooldown();            
+        }
+
+        public void StopSpawning()
+        {
+            _cooldownController.StopCooldown();
+        }
+
+        private void InitializeBorderValues(MovementRestriction borders)
+        {
+            Collider2D bordersCollider = borders.GetComponent<Collider2D>();
+            if (bordersCollider == null) throw new Exception("Borders does not contain Collider2D!");
+
+            _topBorder = bordersCollider.bounds.max.y;
+            _bottomBorder = bordersCollider.bounds.min.y;
+            _leftBorder = bordersCollider.bounds.min.x;
+            _rightBorder = bordersCollider.bounds.max.x;
+        }
+
+        private SpawnParameters GetSpawnParameters()
         {
             SpawnParameters parameters = new SpawnParameters();
 
-            Collider2D bordersCollider = _borders.GetComponent<Collider2D>();
-
-            if (bordersCollider == null) throw new Exception("Borders does not contain Collider2D!");
-
-            float topBorder = bordersCollider.bounds.max.y;
-            float bottomBorder = bordersCollider.bounds.min.y;
-            float leftBorder = bordersCollider.bounds.min.x;
-            float rightBorder = bordersCollider.bounds.max.x;
+            parameters.PrefabType = _enemyTypeSelector.SelectType();
 
             SpawnMode spawnMode = GetSpawnMode();
-            float spawnX = 0;
-            float spawnY = 0;
+            double spawnX = 0;
+            double spawnY = 0;
             float angle = 0;
 
             switch (spawnMode)
             {
                 case SpawnMode.top:
-                    spawnY = topBorder;
-                    spawnX = UnityEngine.Random.Range(leftBorder, rightBorder);
+                    spawnY = _topBorder;
+                    spawnX = _randomizer.NextDouble() * (_rightBorder - _leftBorder) + _leftBorder;
                     if (spawnX > 0) angle = 135; else angle = -135;
                     break;
                 case SpawnMode.bottom:
-                    spawnY = bottomBorder;
-                    spawnX = UnityEngine.Random.Range(leftBorder, rightBorder);
+                    spawnY = _bottomBorder;
+                    spawnX = _randomizer.NextDouble() * (_rightBorder - _leftBorder) + _leftBorder;
                     if (spawnX > 0) angle = 45; else angle = -45;
                     break;
                 case SpawnMode.left:
-                    spawnX = leftBorder;
-                    spawnY = UnityEngine.Random.Range(bottomBorder, topBorder);
+                    spawnX = _leftBorder;
+                    spawnY = _randomizer.NextDouble() * (_topBorder - _bottomBorder) + _bottomBorder;
                     if (spawnY > 0) angle = -135; else angle = -45;
                     break;
                 case SpawnMode.right:
-                    spawnX = rightBorder;
-                    spawnY = UnityEngine.Random.Range(bottomBorder, topBorder);
+                    spawnX = _rightBorder;
+                    spawnY = _randomizer.NextDouble() * (_topBorder - _bottomBorder) + _bottomBorder;
                     if (spawnY > 0) angle = 135; else angle = 45;
                     break;
             }
 
-            parameters.Position = new Vector2(spawnX, spawnY);
+            parameters.Position = new Vector2((float)spawnX, (float)spawnY);
             parameters.RotationAngle = angle;
 
             return parameters;
@@ -74,8 +109,18 @@ namespace Spawning
 
         private SpawnMode GetSpawnMode()
         {
-            return (SpawnMode)Enum.GetValues(typeof(SpawnMode)).GetValue(UnityEngine.Random.Range(0, 4));
+            return (SpawnMode)Enum.GetValues(typeof(SpawnMode)).GetValue(_randomizer.Next(0, 4));
+        }
+
+        private void Spawn()
+        {
+            OnSpawnEvent?.Invoke(GetSpawnParameters());
+            _cooldownController.StartCooldown();
+        }
+
+        ~SpawninigByScreenSides()
+        {
+            StopSpawning();
         }
     }
-
 }

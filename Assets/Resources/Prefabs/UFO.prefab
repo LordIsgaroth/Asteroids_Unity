@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6764094087909767603}
   - component: {fileID: 6764094087909767600}
   - component: {fileID: 6764094087909767601}
-  - component: {fileID: 2953512832780182557}
+  - component: {fileID: 3650394937755009311}
   m_Layer: 0
   m_Name: UFO
   m_TagString: Untagged
@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af0d51c0fce73f42bfb6d5ce8a15db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 1.2
---- !u!114 &2953512832780182557
+--- !u!114 &3650394937755009311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +176,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6764094087909767605}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0f955d75c25ae84e8b99e32dc0f3771, type: 3}
+  m_Script: {fileID: 11500000, guid: 5711df9d687565543a6ce01971921130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 200
+  _movementSpeed: 1

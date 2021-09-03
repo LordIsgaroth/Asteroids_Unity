@@ -1,18 +1,18 @@
 using UnityEngine;
 using Movement;
 using Weapons;
+using BaseObjects;
 
 /// <summary>
 /// Обновление информации об игроке
 /// </summary>
 public class PlayerInformationUpdating : MonoBehaviour
 {
-    [SerializeField] private InertionMovement _movementController;
-    [SerializeField] private WeaponWithCharges _weaponWithCharges;
-
-    private Vector2 _currentPosition;
+    [SerializeField] private MovementView _movementView;
+    [SerializeField] private WeaponView _weaponView;
+    [SerializeField] private PositionView _positionView;
+    
     private PlayerInformation _playerInformation;
-
     public PlayerInformation PlayerInformation { get => _playerInformation; }
 
     private void Start()
@@ -36,28 +36,26 @@ public class PlayerInformationUpdating : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        _currentPosition.x = transform.position.x;
-        _currentPosition.y = transform.position.y;
-        _playerInformation.Position = _currentPosition;
+        _playerInformation.Position = _positionView.CurrentPositon;
     }
 
     private void SetPlayerAngle()
     {
-        _playerInformation.Angle = transform.rotation.eulerAngles.z;
+        _playerInformation.Angle = _positionView.CurrentAngle;
     }
 
     private void SetPlayerSpeed()
     {
-        _playerInformation.Speed = _movementController.CurrentSpeed;
+        _playerInformation.Speed = _movementView.MovementSpeed;
     }
 
     private void SetWeaponCharges()
     {
-        _playerInformation.WeaponCharges = _weaponWithCharges.Charges;
+        _playerInformation.WeaponCharges = _weaponView.CurrentCharges;
     }
 
     private void SetWeaponCooldown()
     {
-        _playerInformation.ChargeCooldown = _weaponWithCharges.Cooldown;
+        _playerInformation.ChargeCooldown = _weaponView.ChargeCooldown;
     }
 }

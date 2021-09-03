@@ -6,6 +6,7 @@ namespace Spawning
     /// </summary>
     public interface ISpawning
     {
-        public SpawnParameters GetSpawnParameters();
+        public void StartSpawning();
+        public void StopSpawning();
     }
 }

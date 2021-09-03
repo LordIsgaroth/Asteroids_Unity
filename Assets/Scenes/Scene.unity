@@ -589,11 +589,13 @@ GameObject:
   - component: {fileID: 584511595}
   - component: {fileID: 584511597}
   - component: {fileID: 584511594}
-  - component: {fileID: 584511600}
-  - component: {fileID: 584511598}
-  - component: {fileID: 584511599}
-  - component: {fileID: 584511596}
   - component: {fileID: 584511601}
+  - component: {fileID: 584511602}
+  - component: {fileID: 584511603}
+  - component: {fileID: 584511596}
+  - component: {fileID: 584511604}
+  - component: {fileID: 584511605}
+  - component: {fileID: 584511598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -670,8 +672,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511599}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+      - m_Target: {fileID: 584511602}
+        m_TargetAssemblyTypeName: InertionMovementController, Movement
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -686,8 +688,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511599}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+      - m_Target: {fileID: 584511602}
+        m_TargetAssemblyTypeName: InertionMovementController, Movement
         m_MethodName: OnLook
         m_Mode: 0
         m_Arguments:
@@ -702,9 +704,9 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511599}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnFireMain
+      - m_Target: {fileID: 584511604}
+        m_TargetAssemblyTypeName: Weapons.BaseWeaponController, Weapons
+        m_MethodName: OnFire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -718,9 +720,9 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511599}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnFireCharged
+      - m_Target: {fileID: 584511605}
+        m_TargetAssemblyTypeName: Weapons.BaseWeaponController, Weapons
+        m_MethodName: OnFire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -746,13 +748,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 584511592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a92d98fe95b06428039c92e14f9cb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 26ae4cc6dadcd6148af61d9b7bf2b0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 3.5
-  _rotationSpeed: 3
-  _inertion: 0.015
-  _acceleration: 0.045
+  _shootingPosition: {fileID: 1694353512}
 --- !u!50 &584511597
 Rigidbody2D:
   serializedVersion: 4
@@ -783,44 +782,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 584511592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a342f5daea86aaa429ad586e31a70244, type: 3}
+  m_Script: {fileID: 11500000, guid: f6647cc917c767e4db896b85867083b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 0.2
-  _projectile: {fileID: 1440871929643468, guid: 4e42b20abdb0a4048997dbd936d7bc0f, type: 3}
-  _shootingPosition: {fileID: 1694353512}
---- !u!114 &584511599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584511592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c305f4f8cdeb7814482d1077e79b81cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainWeapon: {fileID: 584511598}
-  _laserGun: {fileID: 584511600}
-  _movementController: {fileID: 584511596}
---- !u!114 &584511600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584511592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90357d192ad34994882f42de1b45bdfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cooldown: 0.5
-  _projectile: {fileID: 1843400540201598013, guid: f9b1665e73b3644458244ddd087772ec, type: 3}
-  _shootingPosition: {fileID: 1694353512}
-  _maximumCharges: 3
-  _chargeResetCooldown: 5
 --- !u!114 &584511601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,8 +797,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c45dd38a83cf964386dbdbd4eaa6d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementController: {fileID: 584511596}
-  _weaponWithCharges: {fileID: 584511600}
+  _movementView: {fileID: 584511603}
+  _weaponView: {fileID: 584511596}
+  _positionView: {fileID: 584511598}
+--- !u!114 &584511602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d022aa894c40f4c9a2014a580b5233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inertionValue: 0.015
+  _accelerationValue: 0.045
+  _maxMovementSpeed: 3
+  _maxRotationSpeed: 3.5
+--- !u!114 &584511603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd07a78c551e9640ad71d809dc0f554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &584511604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77009655b512604448eaf862cd2f4762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 1440871929643468, guid: 4e42b20abdb0a4048997dbd936d7bc0f, type: 3}
+  _shootingCooldown: 0.25
+--- !u!114 &584511605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584511592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ad14150b97b8f42a706b4a7d5ce579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 1843400540201598013, guid: f9b1665e73b3644458244ddd087772ec, type: 3}
+  _shootingCooldown: 0.5
+  _maximumCharges: 3
+  _chargeResetCooldown: 5
 --- !u!1 &722931110
 GameObject:
   m_ObjectHideFlags: 0
