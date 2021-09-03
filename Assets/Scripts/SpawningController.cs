@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Movement;
 using BaseObjects;
+using System.Collections.Generic;
 
 namespace Spawning
 {
@@ -14,50 +15,82 @@ namespace Spawning
         [SerializeField] private float _spawnCooldown;
         [SerializeField] private GameController _gameController;
         [SerializeField] private MovementRestriction _borders;
-        private ISpawning _spawning;
+        private SpawninigByScreenSides _spawningModel;        
+        private Queue<SpawnParameters> _spawningQueue = new Queue<SpawnParameters>();
 
         void Start()
         {
-            _spawning = new SpawninigByScreenSides(_borders);
-            StartCoroutine(Spawning());
+            _spawningModel = new SpawninigByScreenSides(_spawnCooldown, _borders);
+            _spawningModel.OnSpawnEvent += AddToSpawning;
+            _spawningModel.StartSpawning();
+
+            StartCoroutine(Spawning());            
         }
 
         private IEnumerator Spawning()
-        {
-            yield return new WaitForSeconds(_spawnCooldown);
-
+        {            
             while (true)
             {
-                SpawnObject(ChooseEnemyType());
+                if(_spawningQueue.Count > 0)
+                {
+                    SpawnParameters spawnParameters = _spawningQueue.Dequeue();
+                    SpawnObject(spawnParameters);
+                }
 
-                yield return new WaitForSeconds(_spawnCooldown);
+                yield return new WaitForSeconds(0.01f);
             }
         }
 
-        private string ChooseEnemyType()
+        private void SpawnObject(SpawnParameters spawnParameters)
+        {            
+            EnemyCreator.Create(spawnParameters);
+
+            //SpawnParameters spawnParameters = new SpawnParameters(); //GetSpawnParameters();
+            //spawnParameters.Position = new Vector2(0, 0);
+            //spawnParameters.RotationAngle = 45;
+
+            //GameObject prefab = (GameObject)Resources.Load("Prefabs/Asteroid", typeof(GameObject));
+
+            //try
+            //{
+            //    Instantiate(PrefabsManager.GetPrefabByName(spawnParameters.PrefabType), spawnParameters.Position, Quaternion.identity);
+            //}
+            //catch(System.Exception e)
+            //{
+            //    Debug.Log(e.Message);
+            //}
+            
+
+            //EnemyCreator.CreateByType(prefab, spawnParameters);
+            //EnemyCreator.CreateByType(_enemyTypeSelector.SelectType(), spawnParameters);
+
+            //_cooldownController.StartCooldown();
+
+            //SpawnParameters spawnParameters = _spawningModel.GetSpawnParameters();
+
+            //EnemyCreator.CreateByType(type, spawnParameters);
+
+
+
+            //GameObject generatedObject = Instantiate(PrefabsManager.GetPrefabByName(type), spawnParameters.Position, Quaternion.identity);
+            //generatedObject.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(_gameController.Collision);
+
+            //if (type == "UFO")
+            //{
+            //    SpaceShip movementController = generatedObject.GetComponent<SpaceShip>();
+            //    if (movementController == null) throw new System.Exception("UFO does not contain SpaceShip!");
+            //    _gameController.PlayerPositionChanged.AddListener(movementController.SetTargetPosition);
+            //}
+            //else
+            //{
+            //    generatedObject.transform.Rotate(0, 0, spawnParameters.RotationAngle);
+            //}
+        }
+
+        private void AddToSpawning(SpawnParameters spawnParameters)
         {
-            int generationValue = Random.Range(1, 101);
-
-            if (generationValue >= 85) return "UFO";
-            else return "Asteroid";
+            _spawningQueue.Enqueue(spawnParameters);
         }
 
-        private void SpawnObject(string type)
-        {
-            SpawnParameters spawnParameters = _spawning.GetSpawnParameters();
-            GameObject generatedObject = Instantiate(PrefabsManager.GetPrefabByName(type), spawnParameters.Position, Quaternion.identity);
-            generatedObject.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(_gameController.Collision);
-
-            if (type == "UFO")
-            {
-                SpaceShip movementController = generatedObject.GetComponent<SpaceShip>();
-                if (movementController == null) throw new System.Exception("UFO does not contain SpaceShip!");
-                _gameController.PlayerPositionChanged.AddListener(movementController.SetTargetPosition);
-            }
-            else
-            {
-                generatedObject.transform.Rotate(0, 0, spawnParameters.RotationAngle);
-            }
-        }
     }
 }

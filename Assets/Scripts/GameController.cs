@@ -18,7 +18,11 @@ public class GameController : MonoBehaviour
     public UnityEvent<int> ScoreChanged = new UnityEvent<int>();
 
     void Start()
-    {        
+    {
+        CollisionManager collisionManager = CollisionManager.GetInstanse();
+        collisionManager.SpaceObjectDestroyedEvent.AddListener(AddScore);
+        collisionManager.PlayerCollidedEvent.AddListener(GameOver);
+
         ScoreChanged.AddListener(_interfaceDisplayer.SetScore);
     }
    
@@ -27,40 +31,10 @@ public class GameController : MonoBehaviour
         PlayerPositionChanged.Invoke(_playerInformationUpdating.PlayerInformation.Position);
     }
 
-    public void Collision(SpaceObject spaceObject, Collider2D other)
+    //private void AddScore(SpaceObject spaceObject)
+    private void AddScore(int score)
     {
-        if(other.tag == "Player")
-        {
-            Destroy(other.gameObject);
-            GameOver();
-        }
-        else if(other.tag == "SimpleProjectile" && spaceObject.tag == "Shatters")
-        {
-            Destroy(spaceObject.gameObject);
-            GenerateShards(spaceObject);
-            AddScore(spaceObject);
-        }
-        else if((other.tag == "SimpleProjectile" && !(spaceObject.tag == "Shatters")) || other.tag == "AdvancedProjectile")
-        {
-            Destroy(spaceObject.gameObject);
-            AddScore(spaceObject);
-        }
-    }
-
-    private void GenerateShards(SpaceObject enemy)
-    {
-        GameObject shard1 = Instantiate(PrefabsManager.GetPrefabByName("Shard"), enemy.transform.position, enemy.transform.rotation);
-        shard1.transform.Rotate(0, 0, 45);
-        shard1.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(Collision);
-
-        GameObject shard2 = Instantiate(PrefabsManager.GetPrefabByName("Shard"), enemy.transform.position, enemy.transform.rotation);
-        shard2.transform.Rotate(0, 0, -45);
-        shard2.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(Collision);
-    }
-
-    private void AddScore(SpaceObject spaceObject)
-    {
-        _score += spaceObject.Score;
+        _score += score;
         ScoreChanged.Invoke(_score);
     }
 
@@ -73,5 +47,6 @@ public class GameController : MonoBehaviour
     public void PlayAgain()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Scene");    }
+        SceneManager.LoadScene("Scene"); 
+    }
 }

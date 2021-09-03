@@ -1,6 +1,7 @@
 using UnityEngine;
 using Movement;
 using Weapons;
+using BaseObjects;
 
 /// <summary>
 /// Обновление информации об игроке
@@ -9,10 +10,9 @@ public class PlayerInformationUpdating : MonoBehaviour
 {
     [SerializeField] private MovementView _movementView;
     [SerializeField] private WeaponView _weaponView;
-
-    private Vector2 _currentPosition;
+    [SerializeField] private PositionView _positionView;
+    
     private PlayerInformation _playerInformation;
-
     public PlayerInformation PlayerInformation { get => _playerInformation; }
 
     private void Start()
@@ -36,14 +36,12 @@ public class PlayerInformationUpdating : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        _currentPosition.x = transform.position.x;
-        _currentPosition.y = transform.position.y;
-        _playerInformation.Position = _currentPosition;
+        _playerInformation.Position = _positionView.CurrentPositon;
     }
 
     private void SetPlayerAngle()
     {
-        _playerInformation.Angle = transform.rotation.eulerAngles.z;
+        _playerInformation.Angle = _positionView.CurrentAngle;
     }
 
     private void SetPlayerSpeed()

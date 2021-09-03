@@ -589,13 +589,13 @@ GameObject:
   - component: {fileID: 584511595}
   - component: {fileID: 584511597}
   - component: {fileID: 584511594}
-  - component: {fileID: 584511599}
   - component: {fileID: 584511601}
   - component: {fileID: 584511602}
   - component: {fileID: 584511603}
   - component: {fileID: 584511596}
   - component: {fileID: 584511604}
   - component: {fileID: 584511605}
+  - component: {fileID: 584511598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -720,18 +720,6 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 584511599}
-        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
-        m_MethodName: OnFireCharged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 584511605}
         m_TargetAssemblyTypeName: Weapons.BaseWeaponController, Weapons
         m_MethodName: OnFire
@@ -785,7 +773,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &584511599
+--- !u!114 &584511598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,11 +782,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 584511592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c305f4f8cdeb7814482d1077e79b81cb, type: 3}
+  m_Script: {fileID: 11500000, guid: f6647cc917c767e4db896b85867083b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainWeapon: {fileID: 0}
-  _laserGun: {fileID: 0}
 --- !u!114 &584511601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementView: {fileID: 584511603}
   _weaponView: {fileID: 584511596}
+  _positionView: {fileID: 584511598}
 --- !u!114 &584511602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectile: {fileID: 1440871929643468, guid: 4e42b20abdb0a4048997dbd936d7bc0f, type: 3}
-  _shootingCooldown: 0.2
+  _shootingCooldown: 0.25
 --- !u!114 &584511605
 MonoBehaviour:
   m_ObjectHideFlags: 0

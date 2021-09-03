@@ -1,4 +1,5 @@
 using Movement;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,7 +23,10 @@ public class SpaceObject : MonoBehaviour
     }
 
     UnityEvent<SpaceObject, Collider2D> _enemyCollisionEvent = new UnityEvent<SpaceObject, Collider2D>();
-    public UnityEvent<SpaceObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }   
+    
+    public event Action OnEnemyCollisionEvent;
+
+    public UnityEvent<SpaceObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

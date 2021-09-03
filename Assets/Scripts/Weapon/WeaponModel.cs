@@ -9,15 +9,16 @@ namespace Weapons
         protected GameObject _projectile;
         protected ICooldown _cooldownController;
 
-        public float CurrentCooldown { get => _cooldownController.GetCurrentCooldown(); }
+        public float CurrentCooldown  => _cooldownController.GetCurrentCooldown();
 
         public UnityEvent<GameObject> OnShootEvent = new UnityEvent<GameObject>();
 
         public WeaponModel(float cooldown, GameObject projectile)
         {
-            float cooldownStep = 0.001f;
+            double cooldownInMilliseconds = cooldown * 1000;
+            double cooldownStepInMilliseconds = 10;
 
-            _cooldownController = new CooldownByStep(cooldown, cooldownStep);
+            _cooldownController = new CooldownByStep(cooldownInMilliseconds, cooldownStepInMilliseconds);
             _projectile = projectile;
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Содержит информацию об игроке
 /// </summary>
-public class PlayerInformation
+public struct PlayerInformation
 {   
     public Vector2 Position { get; set; }
     public float Angle { get; set; }

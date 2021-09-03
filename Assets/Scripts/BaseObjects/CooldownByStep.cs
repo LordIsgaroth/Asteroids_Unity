@@ -1,21 +1,24 @@
+using System;
 using System.Timers;
 
 namespace BaseObjects
 {
     public class CooldownByStep : ICooldown
     {
-        protected float _cooldownValue;
-        protected float _cooldownStep;
-        protected float _currentCooldown;
-        protected Timer _cooldownTimer;
+        private double _cooldownValue;
+        private double _cooldownStep;
+        private double _currentCooldown;
+        private Timer _cooldownTimer;
 
-        public CooldownByStep(float cooldownInSeconds, float step)
+        public event Action CooldownCompletedEvent;        
+
+        public CooldownByStep(double cooldown, double step)
         {
-            _cooldownValue = cooldownInSeconds;
+            _cooldownValue = cooldown;
             _cooldownStep = step;
             _currentCooldown = 0;
 
-            _cooldownTimer = new Timer(_cooldownStep * 1000);
+            _cooldownTimer = new Timer(_cooldownStep);
             _cooldownTimer.Elapsed += UpdateCurrentCooldown;
         }
 
@@ -27,7 +30,7 @@ namespace BaseObjects
 
         public float GetCurrentCooldown()
         {
-            return _currentCooldown;
+            return (float)_currentCooldown;
         }
 
         private void UpdateCurrentCooldown(object sender, ElapsedEventArgs e)
@@ -35,7 +38,17 @@ namespace BaseObjects
             _currentCooldown -= _cooldownStep;
 
             if (_currentCooldown < 0) _currentCooldown = 0;
-            if (_currentCooldown == 0) _cooldownTimer.Stop();            
+            if (_currentCooldown == 0)
+            {
+                _cooldownTimer.Stop();
+                CooldownCompletedEvent?.Invoke();
+            }                
+        }
+
+        public void StopCooldown()
+        {
+            _cooldownTimer.Stop();
+            _currentCooldown = 0;
         }
     }
 }

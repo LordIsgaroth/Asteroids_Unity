@@ -1,5 +1,5 @@
 using BaseObjects;
-using System.Threading.Tasks;
+using System;
 
 namespace Weapons
 {
@@ -8,26 +8,26 @@ namespace Weapons
     /// </summary>
     public class ChargesController
     {
-        private int _maxCharges;
-        private float _chargeResetCooldown;
+        private int _maxCharges;        
         private int _currentCharges;       
-        private ICooldown _cooldownController;
-        private Task _chargesManager;
+        private ICooldown _cooldownController;        
+        private Action _cooldownCompleted;
 
-        public int CurrentCharges { get => _currentCharges; }
-        public float CurrentResetCooldown { get => _cooldownController.GetCurrentCooldown(); }
+        public int CurrentCharges => _currentCharges;
+        public float CurrentResetCooldown => _cooldownController.GetCurrentCooldown()/1000;
 
         public ChargesController(int maxCharges, float chargeResetCooldown)
         {
             _maxCharges = maxCharges;
-            _currentCharges = _maxCharges;
-            _chargeResetCooldown = chargeResetCooldown;            
+            _currentCharges = _maxCharges;            
 
-            float cooldownStep = 0.001f;
-            _cooldownController = new CooldownByStep(_chargeResetCooldown, cooldownStep);
+            double cooldownInMilliseconds = chargeResetCooldown * 1000;
+            double cooldownStepInMilliseconds = 10;
 
-            _chargesManager = new Task(ManageCarges);
-            _chargesManager.Start();
+            _cooldownController = new CooldownByStep(cooldownInMilliseconds, cooldownStepInMilliseconds);
+
+            _cooldownCompleted = RestoreCarge;
+            _cooldownController.CooldownCompletedEvent += _cooldownCompleted;
         }
 
         public void UseCharge()
@@ -39,18 +39,11 @@ namespace Weapons
             }                
         }
 
-        private void ManageCarges()
-        {
-            while(true)
-            {
-                if (_currentCharges == _maxCharges) continue;
+        private void RestoreCarge()
+        {            
+            _currentCharges++;
 
-                if (CurrentResetCooldown == 0)
-                {
-                    _currentCharges++;
-                    _cooldownController.StartCooldown();
-                }
-            }
+            if (_currentCharges < _maxCharges) _cooldownController.StartCooldown();            
         }
     }
 }
