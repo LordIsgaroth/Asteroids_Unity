@@ -1,6 +1,9 @@
 
 namespace Weapons
 {
+    /// <summary>
+    /// Контроллер основного оружия
+    /// </summary>
     public class MainWeaponController : BaseWeaponController
     {
         private void Awake()

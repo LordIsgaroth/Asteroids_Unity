@@ -1,6 +1,8 @@
 using System;
-using UnityEngine.Events;
 
+/// <summary>
+/// Интерфейс управления кулдауном
+/// </summary>
 namespace BaseObjects
 {
     public interface ICooldown

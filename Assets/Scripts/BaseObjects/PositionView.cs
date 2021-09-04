@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace BaseObjects
 {
+    /// <summary>
+    /// Отображение местоположения объекта
+    /// </summary>
     public class PositionView : MonoBehaviour
     {
         private Vector2 _currentPosition = new Vector2();

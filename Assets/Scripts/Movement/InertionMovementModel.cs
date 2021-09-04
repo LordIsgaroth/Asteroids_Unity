@@ -13,10 +13,7 @@ namespace Movement
         private float _maxSpeed;
         private float _currentSpeed;
         private Vector2 _movementDirection;
-        private Transform _transform;
-
-        //public float CurrentSpeed => _currentSpeed;
-        //public Vector2 MovementDirection => _movementDirection;
+        private Transform _transform;        
 
         public UnityEvent<float, Vector2> MovementUpdated = new UnityEvent<float, Vector2>();
 

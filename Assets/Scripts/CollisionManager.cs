@@ -2,6 +2,9 @@ using Spawning;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Управление столкновениями объектов
+/// </summary>
 public class CollisionManager
 {
     private static CollisionManager _instance;
@@ -22,49 +25,36 @@ public class CollisionManager
         if (other.tag == "Player")
         {
             GameObject.Destroy(other.gameObject);
-            PlayerCollidedEvent.Invoke();
-            //GameOver();
+            PlayerCollidedEvent.Invoke();            
         }
         else if (other.tag == "SimpleProjectile" && spaceObject.tag == "Shatters")
         {
             GameObject.Destroy(spaceObject.gameObject);
             SpaceObjectDestroyedEvent.Invoke(spaceObject.Score);
-
-            GenerateShards(spaceObject);
-            //AddScore(spaceObject);s
+            GenerateShards(spaceObject);            
         }
         else if ((other.tag == "SimpleProjectile" && !(spaceObject.tag == "Shatters")) || other.tag == "AdvancedProjectile")
         {
             GameObject.Destroy(spaceObject.gameObject);
-            SpaceObjectDestroyedEvent.Invoke(spaceObject.Score);
-            //Destroy(spaceObject.gameObject);
-            //AddScore(spaceObject);
+            SpaceObjectDestroyedEvent.Invoke(spaceObject.Score);            
         }
     }
 
     private void GenerateShards(SpaceObject enemy)
     {        
-        float shardRotationAngle = 50f;
-        enemy.transform.Rotate(0, 0, shardRotationAngle);
+        float shardRotationAngle = 50f;        
+        float enemyAngle = enemy.transform.rotation.eulerAngles.z;
 
         SpawnParameters firstShardParameters = new SpawnParameters();
         firstShardParameters.PrefabType = "Shard";
         firstShardParameters.Position = enemy.transform.position;
-        firstShardParameters.RotationAngle = shardRotationAngle;
+        firstShardParameters.RotationAngle = enemyAngle + shardRotationAngle;
         EnemyCreator.Create(firstShardParameters);
 
         SpawnParameters secondShardParameters = new SpawnParameters();
         secondShardParameters.PrefabType = "Shard";
         secondShardParameters.Position = enemy.transform.position;
-        secondShardParameters.RotationAngle = -shardRotationAngle;
+        secondShardParameters.RotationAngle = enemyAngle - shardRotationAngle;
         EnemyCreator.Create(secondShardParameters);
-
-        //GameObject shard1 = Instantiate(, enemy.transform.position, enemy.transform.rotation);
-        //shard1.transform.Rotate(0, 0, 45);
-        //shard1.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(Collision);
-
-        //GameObject shard2 = Instantiate(PrefabsManager.GetPrefabByName("Shard"), enemy.transform.position, enemy.transform.rotation);
-        //shard2.transform.Rotate(0, 0, -45);
-        //shard2.GetComponent<SpaceObject>().EnemyCollisionEvent.AddListener(Collision);
     }
 }

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Представление оружия
+    /// </summary>
     public class WeaponView : MonoBehaviour
     {
         [SerializeField] protected GameObject _shootingPosition;

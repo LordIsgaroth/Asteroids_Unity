@@ -3,6 +3,9 @@ using System.Timers;
 
 namespace BaseObjects
 {
+    /// <summary>
+    /// Обновляет кулдаун с определенной периодичностью
+    /// </summary>
     public class CooldownByStep : ICooldown
     {
         private double _cooldownValue;

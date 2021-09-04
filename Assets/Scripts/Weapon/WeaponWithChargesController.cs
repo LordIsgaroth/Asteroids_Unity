@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Контроллер оружия с зарядами
+    /// </summary>
     public class WeaponWithChargesController : BaseWeaponController
     {
         [SerializeField] private int _maximumCharges;

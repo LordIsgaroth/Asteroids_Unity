@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Модель оружия с зарядами
+    /// </summary>
     public class WeaponWithChargesModel : WeaponModel
     {
         private ChargesController _chargesController;

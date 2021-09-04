@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectile: {fileID: 1440871929643468, guid: 4e42b20abdb0a4048997dbd936d7bc0f, type: 3}
-  _shootingCooldown: 0.25
+  _shootingCooldown: 0.2
 --- !u!114 &584511605
 MonoBehaviour:
   m_ObjectHideFlags: 0

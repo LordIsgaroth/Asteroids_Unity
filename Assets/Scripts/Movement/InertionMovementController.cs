@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Movement
-{
-    // TODO: избавиться от наследования от MonoBeh
-
+{   
     /// <summary>
     /// Контроллер движения с инерцией
     /// </summary>

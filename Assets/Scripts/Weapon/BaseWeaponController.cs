@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Базовый контроллер оружия
+    /// </summary>
     public abstract class BaseWeaponController : MonoBehaviour
     {
         [SerializeField] protected GameObject _projectile;

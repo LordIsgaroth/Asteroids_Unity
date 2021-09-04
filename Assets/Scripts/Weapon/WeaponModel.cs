@@ -4,6 +4,9 @@ using BaseObjects;
 
 namespace Weapons
 {
+    /// <summary>
+    /// Модель оружия
+    /// </summary>
     public class WeaponModel
     {
         protected GameObject _projectile;

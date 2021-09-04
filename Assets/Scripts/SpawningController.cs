@@ -43,7 +43,7 @@ namespace Spawning
 
         private void SpawnObject(SpawnParameters spawnParameters)
         {            
-            EnemyCreator.Create(spawnParameters);
+            EnemyCreator.Create(spawnParameters, _gameController.PlayerPositionChanged);
 
             //SpawnParameters spawnParameters = new SpawnParameters(); //GetSpawnParameters();
             //spawnParameters.Position = new Vector2(0, 0);
