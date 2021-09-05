@@ -17,7 +17,7 @@ namespace Weapons
 
         public void Shoot(GameObject _projectile)
         {
-            Instantiate(_projectile, _shootingPosition.transform.position, transform.rotation);
+            Instantiate(_projectile, _shootingPosition.transform.position, _shootingPosition.transform.rotation);
         }
 
         public void UpdateCharges(int currentCharges, float chargeCooldown)

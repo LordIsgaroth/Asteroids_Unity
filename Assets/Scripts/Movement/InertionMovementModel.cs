@@ -33,7 +33,7 @@ namespace Movement
             if (_currentSpeed < _maxSpeed) _currentSpeed += _accelerationValue;
             else if (_currentSpeed > _maxSpeed) _currentSpeed = _maxSpeed;
 
-            CalculateDirection();
+            SetMovementDirection();
 
             MovementUpdated.Invoke(_currentSpeed, _movementDirection);
         }
@@ -46,10 +46,9 @@ namespace Movement
             MovementUpdated.Invoke(_currentSpeed, _movementDirection);
         }
 
-        private void CalculateDirection()
+        private void SetMovementDirection()
         {
-            //TODO: переработать расчёт направления
-            _movementDirection = Vector2.Lerp(_movementDirection, _transform.up, Time.deltaTime);
+            _movementDirection = _transform.up;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Movement
     /// </summary>
     public class InertionMovementController : MonoBehaviour
     {
+        [SerializeField] GameObject _childObject;
         [SerializeField] private float _inertionValue;
         [SerializeField] private float _accelerationValue;
         [SerializeField] private float _maxMovementSpeed;
@@ -23,7 +24,7 @@ namespace Movement
             View = GetComponent<MovementByDirectionWithRotationView>();
             View.RotationSpeed = _maxRotationSpeed;
 
-            Model = new InertionMovementModel(_accelerationValue, _inertionValue, _maxMovementSpeed, View.transform);
+            Model = new InertionMovementModel(_accelerationValue, _inertionValue, _maxMovementSpeed, _childObject.transform);
             Model.MovementUpdated.AddListener(View.UpdateMovement);
         }
 
