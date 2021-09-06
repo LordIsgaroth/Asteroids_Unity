@@ -4,9 +4,9 @@ using UnityEngine.Events;
 namespace Movement
 {
     /// <summary>
-    /// Модель движения с инерцией
+    /// Движение с инерцией
     /// </summary>
-    public class InertionMovementModel
+    public class InertionMovement
     {
         private float _accelerationValue;
         private float _inertionValue;
@@ -17,7 +17,7 @@ namespace Movement
 
         public UnityEvent<float, Vector2> MovementUpdated = new UnityEvent<float, Vector2>();
 
-        public InertionMovementModel(float accelerationValue, float inertionValue, float maxSpeed, Transform transform)
+        public InertionMovement(float accelerationValue, float inertionValue, float maxSpeed, Transform transform)
         {
             _accelerationValue = accelerationValue;
             _inertionValue = inertionValue;

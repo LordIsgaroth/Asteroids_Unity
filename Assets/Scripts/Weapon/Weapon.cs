@@ -7,7 +7,7 @@ namespace Weapons
     /// <summary>
     /// Модель оружия
     /// </summary>
-    public class WeaponModel
+    public class Weapon
     {
         protected GameObject _projectile;
         protected ICooldown _cooldownController;
@@ -16,7 +16,7 @@ namespace Weapons
 
         public UnityEvent<GameObject> OnShootEvent = new UnityEvent<GameObject>();
 
-        public WeaponModel(float cooldown, GameObject projectile)
+        public Weapon(float cooldown, GameObject projectile)
         {
             double cooldownInMilliseconds = cooldown * 1000;
             double cooldownStepInMilliseconds = 10;
