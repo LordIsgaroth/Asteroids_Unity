@@ -556,12 +556,6 @@ MonoBehaviour:
   _interfaceDisplayer: {fileID: 8363467657004413319}
   _borders: {fileID: 374095956}
   _gameOverManager: {fileID: 1955891362}
-  PlayerPositionChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  ScoreChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &539192907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnCooldown: 1
-  _gameController: {fileID: 539192906}
+  _playerPosition: {fileID: 658390451}
   _borders: {fileID: 374095959}
 --- !u!1 &584511592
 GameObject:

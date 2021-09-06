@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Movement;
 
@@ -13,29 +12,19 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _borders;  
     [SerializeField] private GameOver _gameOverManager;
 
-    private int _score = 0;
-
-    public UnityEvent<Vector2> PlayerPositionChanged = new UnityEvent<Vector2>();
-    public UnityEvent<int> ScoreChanged = new UnityEvent<int>();
+    private int _score = 0;    
 
     void Start()
     {
         CollisionManager collisionManager = CollisionManager.GetInstanse();
         collisionManager.SpaceObjectDestroyedEvent.AddListener(AddScore);
-        collisionManager.PlayerCollidedEvent.AddListener(GameOver);
-
-        ScoreChanged.AddListener(_interfaceDisplayer.SetScore);
+        collisionManager.PlayerCollidedEvent.AddListener(GameOver);        
     }
-   
-    void Update()
-    {
-        PlayerPositionChanged.Invoke(_playerPosition.CurrentPositon);
-    }
-    
+         
     private void AddScore(int score)
     {
         _score += score;
-        ScoreChanged.Invoke(_score);
+        _interfaceDisplayer.SetScore(_score);        
     }
 
     private void GameOver()
