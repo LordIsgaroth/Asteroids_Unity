@@ -32,7 +32,7 @@ namespace Spawning
 
         void Update()
         {
-            _playerPositionChangedEvent.Invoke(_playerPosition.CurrentPositon);
+            _playerPositionChangedEvent.Invoke(_playerPosition.CurrentPositon);            
         }
 
         private IEnumerator Spawning()

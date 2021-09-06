@@ -1,6 +1,9 @@
 using Movement;
 using UnityEngine;
 
+/// <summary>
+/// Движущийся снаряд
+/// </summary>
 public class MovingProjectile : MonoBehaviour
 {
     [SerializeField] protected float _movementSpeed;

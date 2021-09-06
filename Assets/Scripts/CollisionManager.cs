@@ -25,7 +25,7 @@ public class CollisionManager
         if (other.tag == "Player")
         {
             GameObject.Destroy(other.gameObject);
-            PlayerCollidedEvent.Invoke();            
+            PlayerCollidedEvent.Invoke();
         }
         else if (other.tag == "SimpleProjectile" && spaceObject.tag == "Shatters")
         {

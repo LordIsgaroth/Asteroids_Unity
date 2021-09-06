@@ -5,14 +5,14 @@ namespace Weapons
     /// <summary>
     /// Модель оружия с зарядами
     /// </summary>
-    public class WeaponWithChargesModel : WeaponModel
+    public class WeaponWithCharges : Weapon
     {
         private ChargesController _chargesController;
 
         public int Charges { get => _chargesController.CurrentCharges; }
         public float ChargeCooldown { get => _chargesController.CurrentResetCooldown; }
 
-        public WeaponWithChargesModel(float cooldown, GameObject projectile, int maximumCharges, float chargeResetCooldown)
+        public WeaponWithCharges(float cooldown, GameObject projectile, int maximumCharges, float chargeResetCooldown)
             :base(cooldown, projectile)
         {
             _chargesController = new ChargesController(maximumCharges, chargeResetCooldown);

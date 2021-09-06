@@ -6,8 +6,7 @@ using Movement;
 /// Класс, контролирующий игровой процесс
 /// </summary>
 public class GameController : MonoBehaviour
-{
-    [SerializeField] private PlayerPositionView _playerPosition;
+{    
     [SerializeField] private DisplayToInterface _interfaceDisplayer;
     [SerializeField] private GameObject _borders;  
     [SerializeField] private GameOver _gameOverManager;

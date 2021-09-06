@@ -12,7 +12,7 @@ namespace Weapons
         [SerializeField] protected float _shootingCooldown;
 
         protected WeaponView _view;
-        protected WeaponModel _model;
+        protected Weapon _model;
 
         public void OnFire(InputAction.CallbackContext context)
         {

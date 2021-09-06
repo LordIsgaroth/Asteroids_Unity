@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 namespace Spawning
 {
+    /// <summary>
+    /// Создание врагов на основании параметров
+    /// </summary>
     public static class EnemyCreator
     {
         public static GameObject Create(SpawnParameters spawnParameters, UnityEvent<Vector2> playerPositionChanged = null)

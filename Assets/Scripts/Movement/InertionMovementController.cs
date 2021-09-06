@@ -16,22 +16,22 @@ namespace Movement
 
         private bool _accelerated;
 
-        public MovementByDirectionWithRotationView View { get; private set; }
-        public InertionMovementModel Model { get; private set; }
+        private MovementByDirectionWithRotationView _view;
+        private InertionMovement _model;        
 
         private void Awake()
         {
-            View = GetComponent<MovementByDirectionWithRotationView>();
-            View.RotationSpeed = _maxRotationSpeed;
+            _view = GetComponent<MovementByDirectionWithRotationView>();
+            _view.RotationSpeed = _maxRotationSpeed;
 
-            Model = new InertionMovementModel(_accelerationValue, _inertionValue, _maxMovementSpeed, _childObject.transform);
-            Model.MovementUpdated.AddListener(View.UpdateMovement);
+            _model = new InertionMovement(_accelerationValue, _inertionValue, _maxMovementSpeed, _childObject.transform);
+            _model.MovementUpdated.AddListener(_view.UpdateMovement);
         }
 
         private void FixedUpdate()
         {
-            if (_accelerated) Model.Accelerate();
-            Model.Inert();
+            if (_accelerated) _model.Accelerate();
+            _model.Inert();
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -41,7 +41,7 @@ namespace Movement
 
         public void OnLook(InputAction.CallbackContext context)
         {
-            View.RotationDirection = -context.ReadValue<Vector2>().x;
+            _view.RotationDirection = -context.ReadValue<Vector2>().x;
         }
     }
 }

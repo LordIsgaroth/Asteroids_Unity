@@ -552,7 +552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e788f027a46c449ac17845ae2ff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPosition: {fileID: 658390451}
   _interfaceDisplayer: {fileID: 8363467657004413319}
   _borders: {fileID: 374095956}
   _gameOverManager: {fileID: 1955891362}
@@ -584,7 +583,7 @@ GameObject:
   - component: {fileID: 584511599}
   m_Layer: 0
   m_Name: PlayerShip
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -697,7 +696,7 @@ GameObject:
   - component: {fileID: 658390451}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
