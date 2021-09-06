@@ -552,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137e788f027a46c449ac17845ae2ff79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInformationUpdating: {fileID: 658390446}
+  _playerPosition: {fileID: 658390451}
   _interfaceDisplayer: {fileID: 8363467657004413319}
   _borders: {fileID: 374095956}
   _gameOverManager: {fileID: 1955891362}
@@ -694,14 +694,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 658390444}
-  - component: {fileID: 658390446}
+  - component: {fileID: 658390452}
   - component: {fileID: 658390445}
   - component: {fileID: 658390447}
   - component: {fileID: 658390448}
   - component: {fileID: 658390449}
   - component: {fileID: 658390450}
   - component: {fileID: 658390451}
-  - component: {fileID: 658390452}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -741,21 +740,6 @@ MonoBehaviour:
   _accelerationValue: 0.045
   _maxMovementSpeed: 3
   _maxRotationSpeed: 3.5
---- !u!114 &658390446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658390443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c45dd38a83cf964386dbdbd4eaa6d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movementView: {fileID: 658390447}
-  _weaponView: {fileID: 658390448}
-  _positionView: {fileID: 658390451}
 --- !u!114 &658390447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,9 +805,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 658390443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6647cc917c767e4db896b85867083b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 46c63e00de1bf0c4ca5daa4e91925c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _childObject: {fileID: 584511592}
 --- !u!114 &658390452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2742,7 +2727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4421a41161797af43ac16a2d5b885e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updater: {fileID: 658390446}
+  _movementView: {fileID: 658390447}
+  _weaponView: {fileID: 658390448}
+  _positionView: {fileID: 658390451}
   _interfaceUpdateTime: 0.15
   _playerPositionText: {fileID: 310829912}
   _playerAngleText: {fileID: 1945048908}

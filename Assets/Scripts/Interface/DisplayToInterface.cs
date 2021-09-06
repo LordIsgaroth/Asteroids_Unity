@@ -1,13 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Movement;
+using Weapons;
 
 /// <summary>
 /// Вывод информации в пользовательский интерфейс
 /// </summary>
 public class DisplayToInterface : MonoBehaviour
 {
-    [SerializeField] private PlayerInformationUpdating _updater;    
+    [SerializeField] private MovementView _movementView;
+    [SerializeField] private WeaponView _weaponView;
+    [SerializeField] private PlayerPositionView _positionView;
+    
     [SerializeField] private float _interfaceUpdateTime;
 
     [SerializeField] private Text _playerPositionText;
@@ -38,11 +43,36 @@ public class DisplayToInterface : MonoBehaviour
 
     private void DisplayPlayerData()
     {
-        _playerPositionText.text = _updater.PlayerInformation.PositionToString();
-        _playerAngleText.text = _updater.PlayerInformation.AngleToString();
-        _playerSpeedText.text = _updater.PlayerInformation.SpeedToString();
-        _weaponChargesText.text = _updater.PlayerInformation.WeaponChargesToString();
-        _weaponCooldownText.text = _updater.PlayerInformation.WeaponCooldownToString();
+        _playerPositionText.text = PositionToString();
+        _playerAngleText.text = AngleToString();
+        _playerSpeedText.text = SpeedToString();
+        _weaponChargesText.text = WeaponChargesToString();
+        _weaponCooldownText.text = WeaponCooldownToString();
+    }
+
+    private string PositionToString()
+    {
+        return $"{_positionView.CurrentPositon.x * 100:f2}; {_positionView.CurrentPositon.y * 100:f2}";
+    }
+
+    private string AngleToString()
+    {
+        return $"{_positionView.CurrentAngle:f0}°";
+    }
+
+    private string SpeedToString()
+    {
+        return $"{_movementView.MovementSpeed * 360f:f2} M/h";
+    }
+
+    private string WeaponChargesToString()
+    {
+        return $"{_weaponView.CurrentCharges}";
+    }
+
+    private string WeaponCooldownToString()
+    {
+        return $"{_weaponView.ChargeCooldown:f2} sec";
     }
 
     public void SetScore(int score)

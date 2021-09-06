@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Movement;
 
 /// <summary>
 /// Класс, контролирующий игровой процесс
 /// </summary>
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private PlayerInformationUpdating _playerInformationUpdating;
+    [SerializeField] private PlayerPositionView _playerPosition;
     [SerializeField] private DisplayToInterface _interfaceDisplayer;
     [SerializeField] private GameObject _borders;  
     [SerializeField] private GameOver _gameOverManager;
@@ -28,10 +29,9 @@ public class GameController : MonoBehaviour
    
     void Update()
     {
-        PlayerPositionChanged.Invoke(_playerInformationUpdating.PlayerInformation.Position);
+        PlayerPositionChanged.Invoke(_playerPosition.CurrentPositon);
     }
-
-    //private void AddScore(SpaceObject spaceObject)
+    
     private void AddScore(int score)
     {
         _score += score;

@@ -28,8 +28,6 @@ namespace Movement
 
         public void Accelerate()
         {
-            _movementDirection = Vector2.up;
-
             if (_currentSpeed < _maxSpeed) _currentSpeed += _accelerationValue;
             else if (_currentSpeed > _maxSpeed) _currentSpeed = _maxSpeed;
 

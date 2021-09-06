@@ -1,5 +1,4 @@
 using Movement;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +13,9 @@ public class SpaceObject : MonoBehaviour
 
     protected MovementView _movementView;
 
+    protected UnityEvent<SpaceObject, Collider2D> _enemyCollisionEvent = new UnityEvent<SpaceObject, Collider2D>();
+    public UnityEvent<SpaceObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }
+
     public int Score { get => _score; }
 
     protected void Awake()
@@ -21,12 +23,6 @@ public class SpaceObject : MonoBehaviour
         _movementView = GetComponent<MovementView>();
         _movementView.MovementSpeed = _movementSpeed;        
     }
-
-    UnityEvent<SpaceObject, Collider2D> _enemyCollisionEvent = new UnityEvent<SpaceObject, Collider2D>();
-    
-    public event Action OnEnemyCollisionEvent;
-
-    public UnityEvent<SpaceObject, Collider2D> EnemyCollisionEvent { get => _enemyCollisionEvent; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

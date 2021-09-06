@@ -1,12 +1,14 @@
 using UnityEngine;
 
-namespace BaseObjects
+namespace Movement
 {
     /// <summary>
-    /// Отображение местоположения объекта
+    /// Отображение местоположения игрока
     /// </summary>
-    public class PositionView : MonoBehaviour
+    public class PlayerPositionView : MonoBehaviour
     {
+        [SerializeField] GameObject _childObject;
+
         private Vector2 _currentPosition = new Vector2();
 
         public Vector2 CurrentPositon
@@ -19,6 +21,6 @@ namespace BaseObjects
             }
         }
 
-        public float CurrentAngle => transform.rotation.eulerAngles.z;
+        public float CurrentAngle => _childObject.transform.rotation.eulerAngles.z;
     }
 }
