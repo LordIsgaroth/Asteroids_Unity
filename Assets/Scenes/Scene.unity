@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 658390449}
   - component: {fileID: 658390450}
   - component: {fileID: 658390451}
+  - component: {fileID: 658390446}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -733,6 +734,19 @@ MonoBehaviour:
   _accelerationValue: 0.045
   _maxMovementSpeed: 3
   _maxRotationSpeed: 3.5
+--- !u!114 &658390446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658390443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc17c995a81f6f489c09458c34c1648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingPosition: {fileID: 1694353512}
 --- !u!114 &658390447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2721,7 +2735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementView: {fileID: 658390447}
-  _weaponView: {fileID: 658390448}
+  _weaponView: {fileID: 658390446}
   _positionView: {fileID: 658390451}
   _interfaceUpdateTime: 0.15
   _playerPositionText: {fileID: 310829912}

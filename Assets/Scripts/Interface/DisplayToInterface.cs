@@ -10,7 +10,7 @@ using Weapons;
 public class DisplayToInterface : MonoBehaviour
 {
     [SerializeField] private MovementView _movementView;
-    [SerializeField] private WeaponView _weaponView;
+    [SerializeField] private WeaponWithChargesView _weaponView;
     [SerializeField] private PlayerPositionView _positionView;
     
     [SerializeField] private float _interfaceUpdateTime;

@@ -12,14 +12,14 @@ namespace Weapons
 
         private void Awake()
         {
-            _view = GetComponent<WeaponView>();
+            _view = GetComponent<WeaponWithChargesView>();
             _model = new WeaponWithCharges(_shootingCooldown, _projectile, _maximumCharges, _chargeResetCooldown);
             _model.OnShootEvent.AddListener(_view.Shoot);
         }
 
         private void Update()
         {
-            _view.UpdateCharges((_model as WeaponWithCharges).Charges, (_model as WeaponWithCharges).ChargeCooldown);
+           (_view as WeaponWithChargesView).UpdateCharges((_model as WeaponWithCharges).Charges, (_model as WeaponWithCharges).ChargeCooldown);
         }
     }
 }
