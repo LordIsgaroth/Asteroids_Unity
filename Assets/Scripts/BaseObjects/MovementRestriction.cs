@@ -18,7 +18,10 @@ namespace BaseObjects
         /// </summary>    
         private void RevertPosition(Collider2D other)
         {
-            other.transform.position = new Vector3(-other.transform.position.x, -other.transform.position.y);
+            Transform parentTransform = other.transform.parent;
+
+            if(parentTransform != null) parentTransform.position = new Vector3(-other.transform.position.x, -other.transform.position.y);
+            else other.transform.position = new Vector3(-other.transform.position.x, -other.transform.position.y);
         }
     }
 }
