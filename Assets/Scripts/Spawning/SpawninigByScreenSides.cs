@@ -17,9 +17,9 @@ namespace Spawning
         private ITypeSelection _enemyTypeSelector;
         private ICooldown _cooldownController;
         private Action _cooldownCompleted;             
-        private System.Random _randomizer;
+        private System.Random _randomizer;        
 
-        public Action<SpawnParameters> OnSpawnEvent;
+        public event Action<SpawnParameters> OnSpawnEvent;
 
         private enum SpawnMode
         {

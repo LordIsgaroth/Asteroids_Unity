@@ -1,4 +1,5 @@
 using Movement;
+using Enemies;
 using BaseObjects;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,13 +17,16 @@ namespace Spawning
         [SerializeField] private PlayerPositionView _playerPosition;
         [SerializeField] private MovementRestriction _borders;
 
-        private SpawninigByScreenSides _spawningModel;        
+        private ISpawning _spawningModel;
         private Queue<SpawnParameters> _spawningQueue = new Queue<SpawnParameters>();
 
         private UnityEvent<Vector2> _playerPositionChangedEvent = new UnityEvent<Vector2>();
 
         void Start()
         {
+            EnemyCollisionManager collisionManager = EnemyCollisionManager.GetInstanse();
+            collisionManager.AsteroidShattersEvent.AddListener(SpawnShatters);
+
             _spawningModel = new SpawninigByScreenSides(_spawnCooldown, _borders);
             _spawningModel.OnSpawnEvent += AddToSpawning;
             _spawningModel.StartSpawning();
@@ -50,13 +54,35 @@ namespace Spawning
         }
 
         private void SpawnObject(SpawnParameters spawnParameters)
-        {            
-            EnemyCreator.Create(spawnParameters, _playerPositionChangedEvent);
+        {
+            EnemyCreator enemyCreator;
+
+            if (spawnParameters.PrefabType == "Asteroid")
+            {
+                enemyCreator = new AsteroidCreator(spawnParameters.Position, spawnParameters.RotationAngle);
+                enemyCreator.Create();
+            }
+            else if (spawnParameters.PrefabType == "UFO")
+            {
+                enemyCreator = new UFOCreator(spawnParameters.Position, _playerPositionChangedEvent);
+                enemyCreator.Create();
+            }                            
         }
 
         private void AddToSpawning(SpawnParameters spawnParameters)
         {
             _spawningQueue.Enqueue(spawnParameters);
+        }
+
+        private void SpawnShatters(Vector3 position, float angle)
+        {
+            float shardRotationAngle = 50f;
+
+            ShardCreator firstCreator = new ShardCreator(position, angle + shardRotationAngle);
+            firstCreator.Create();
+
+            ShardCreator secondCreator = new ShardCreator(position, angle - shardRotationAngle);
+            secondCreator.Create();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 
 namespace Spawning
 {
@@ -8,5 +9,7 @@ namespace Spawning
     {
         public void StartSpawning();
         public void StopSpawning();
+
+        public event Action<SpawnParameters> OnSpawnEvent;
     }
 }

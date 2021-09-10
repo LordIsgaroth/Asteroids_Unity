@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Movement;
+using Enemies;
 
 /// <summary>
 /// Класс, контролирующий игровой процесс
@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        CollisionManager collisionManager = CollisionManager.GetInstanse();
+        EnemyCollisionManager collisionManager = EnemyCollisionManager.GetInstanse();
         collisionManager.SpaceObjectDestroyedEvent.AddListener(AddScore);
         collisionManager.PlayerCollidedEvent.AddListener(GameOver);        
     }

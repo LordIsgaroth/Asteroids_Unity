@@ -1,10 +1,9 @@
 {
-    "name": "Spawning",
+    "name": "Interface",
     "rootNamespace": "",
     "references": [
-        "GUID:4aae683a22f146a4dbe1e3ea29b1b29c",
         "GUID:9e2cf79bd261c9844a877575d1b87bf9",
-        "GUID:43880331825d3624d8389be50420a141"
+        "GUID:e3a8217b7215e81439342133f3a945d2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
